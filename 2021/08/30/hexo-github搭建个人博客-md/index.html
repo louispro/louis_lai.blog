@@ -299,7 +299,10 @@
 
 <span id="more"></span>
 
-<h1 id="HEXO-github搭建个人博客"><a href="#HEXO-github搭建个人博客" class="headerlink" title="HEXO+github搭建个人博客"></a>HEXO+github搭建个人博客</h1><h2 id="一、环境配置"><a href="#一、环境配置" class="headerlink" title="一、环境配置"></a>一、环境配置</h2><h3 id="1-1、github配置SSH-KEY"><a href="#1-1、github配置SSH-KEY" class="headerlink" title="1.1、github配置SSH KEY"></a>1.1、github配置SSH KEY</h3><img src="/2021/08/30/hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-md/Users\louis_lai\AppData\Roaming\Typora\typora-user-images\image-20210804112323471.png" alt="image-20210804112323471" style="zoom:67%;">
+<h1 id="HEXO-github搭建个人博客"><a href="#HEXO-github搭建个人博客" class="headerlink" title="HEXO+github搭建个人博客"></a>HEXO+github搭建个人博客</h1><h2 id="一、环境配置"><a href="#一、环境配置" class="headerlink" title="一、环境配置"></a>一、环境配置</h2><h3 id="1-1、github配置SSH-KEY"><a href="#1-1、github配置SSH-KEY" class="headerlink" title="1.1、github配置SSH KEY"></a>1.1、github配置SSH KEY</h3><div align="center">
+
+<p><img src="/2021/08/30/hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-md/ssh-key.png" alt="ssh key"></p>
+</div>
 
 <p>按照上图 操作然后把密钥复制过去便可，对于windows用户.ssh目录在c盘的用户目录下。</p>
 <ul>
@@ -327,15 +330,25 @@
 </ul>
 <h3 id="1-3、安装HEXO"><a href="#1-3、安装HEXO" class="headerlink" title="1.3、安装HEXO"></a>1.3、安装HEXO</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
 
-<img src="/2021/08/30/hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-md/Users\louis_lai\AppData\Roaming\Typora\typora-user-images\image-20210804114017989.png" alt="image-20210804114017989" style="zoom:67%;">
+<div align="center">
+
+<p>![ssh key](./hexo-github搭建个人博客-md/install hexo.png)</p>
+</div>
 
 <h2 id="二、搭建与发布"><a href="#二、搭建与发布" class="headerlink" title="二、搭建与发布"></a>二、搭建与发布</h2><h3 id="2-1、博客初始化"><a href="#2-1、博客初始化" class="headerlink" title="2.1、博客初始化"></a>2.1、博客初始化</h3><blockquote>
 <p>创建一个blog目录，在该目录下打开git bash</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init #初始化</span><br><span class="line">hexo g	#生成</span><br><span class="line">hexo s	#开启hexo本地预览服务，他会告诉你url</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/08/30/hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-md/Users\louis_lai\AppData\Roaming\Typora\typora-user-images\image-20210804120412240.png" alt="image-20210804120412240"></p>
+<div align="center">
+
+<p>![ssh key](./hexo-github搭建个人博客-md/init hexo.png)</p>
+</div>
+
 <p>输入上图中的url地址<a href="http://localhost:4000会进入如下界面">http://localhost:4000会进入如下界面</a></p>
-<img src="/2021/08/30/hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-md/Users\louis_lai\AppData\Roaming\Typora\typora-user-images\image-20210804120509677.png" alt="image-20210804120509677" style="zoom:67%;">
+<div align="center">
+
+<p><img src="/2021/08/30/hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-md/preview.png" alt="ssh key"></p>
+</div>
 </blockquote>
 <h3 id="2-2、修改主题"><a href="#2-2、修改主题" class="headerlink" title="2.2、修改主题"></a>2.2、修改主题</h3><blockquote>
 <ul>
