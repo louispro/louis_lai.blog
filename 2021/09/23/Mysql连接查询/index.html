@@ -222,7 +222,7 @@
     </span>
     <span>
       <span class="iconfont icon-calendar-check"></span>
-      更新于:&nbsp;2021-09-23
+      更新于:&nbsp;2021-09-24
     </span>
     <span>
       <span class="iconfont icon-folder"></span>
@@ -316,7 +316,23 @@
 <p>查询结果：</p>
 <img src="http://tva1.sinaimg.cn/large/006gOimwly1guquxd8yw9j60bo08nwg402.jpg">
 
-<h3 id><a href="#" class="headerlink" title></a></h3>
+<h3 id="三、group-by"><a href="#三、group-by" class="headerlink" title="三、group by"></a>三、group by</h3><p><code>group by</code>根据by对数据按照哪个字段进行分组，字段相同的就分为同一组</p>
+<p>3.1、单字段分组</p>
+<img src="http://tva1.sinaimg.cn/large/006gOimwly1gursw8kfutj606s02st9502.jpg">
+
+<p>示例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> grade <span class="keyword">from</span> student <span class="keyword">group</span> <span class="keyword">by</span> grade</span><br><span class="line">#分组查询，根据grade字段进行分组，最终结果去除重复的</span><br></pre></td></tr></table></figure>
+
+<p>查询结果：</p>
+<img src="http://tva1.sinaimg.cn/large/006gOimwly1gurt01bam1j602801zjr902.jpg">
+
+<p>3.2、多字段分组</p>
+<p>多个字段进行分组 ，需要将多个字段看成整体，多个字段都相等的才看成一组。</p>
+<p>示例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> name,<span class="built_in">sum</span>(salary) <span class="keyword">from</span> student <span class="keyword">group</span> <span class="keyword">by</span> name,grade</span><br><span class="line">#按照名字和分数，名字和分数都相等的才是一组的</span><br></pre></td></tr></table></figure>
+
+<p><code>group by</code> 通常配合聚合函数使用常见的聚合函数有<code>count()</code>,<code>sum()</code>,<code>avg()</code>,<code>max()</code>,<code>min()</code></p>
+
   </div>
   <!--文末结束语-->
   
@@ -327,6 +343,11 @@
   <div class="mdui-divider"></div>
   
   <nav>
+    
+      <a rel="prev" class="post-nav-item mdui-float-left" href="/2021/09/25/SpringBoot%E9%9B%86%E6%88%90%E5%9C%BA%E6%99%AF%E5%A4%A7%E5%85%A8/">
+        <i class="iconfont icon-angle-left"></i>
+        <span>SpringBoot集成场景大全</span>
+      </a>
     
     
       <a rel="next" class="post-nav-item mdui-float-right" href="/2021/09/18/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
@@ -345,7 +366,7 @@
     <ul class="mdui-menu" id="toc">
       <li class="mdui-menu-item">
         <a href="/2021/09/23/Mysql%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2/" id="toc-header" class="mdui-ripple">文章目录</a>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%B7%A6%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.</span> <span class="toc-text">一、左连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%8F%B3%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.</span> <span class="toc-text">二、右连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text"></span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%B7%A6%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.</span> <span class="toc-text">一、左连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%8F%B3%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.</span> <span class="toc-text">二、右连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81group-by"><span class="toc-number">3.</span> <span class="toc-text">三、group by</span></a></li></ol>
       </li>
     </ul>
   </div>

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <script>if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode)) window.location.href="https://support.dmeng.net/upgrade-your-browser.html?referrer="+encodeURIComponent(window.location.href); </script>
+    
+    
+        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Regular.woff2" as="font">
+        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Bold.woff2" as="font">
+    
+    
+    
+        <link rel="shortcut icon" href="/icons/favicon.ico">
+    
+
+    
+    
+        
+<link rel="stylesheet" href="/css/mdui.min.v1.0.0.css">
+
+    
+    
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/iconfont.css">
+
+
+    
+    
+
+    
+        <script data-ad-client="ca-" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+          
+
+
+    
+    
+    <title>
+        
+            SpringBoot集成Junit5 | Louis
+        
+    </title>
+    
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-teal mdui-theme-accent-blue">
+  
+  <header class="mdui-appbar mdui-appbar-fixed">
+  <div id="toolbar" class="mdui-toolbar mdui-color-theme">
+    <button class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="iconfont icon-menu"></i></button>
+    <a href="/" class="mdui-typo-headline">Louis</a>
+    <a href="/" class="header-subtitle mdui-typo-headline">天天向上</a>
+    <div class="mdui-toolbar-spacer"></div>
+    <button class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: 'search'}"><i class="iconfont icon-search"></i></button>
+  </div>
+</header>
+
+<div class="mdui-dialog" id="search">
+  
+    <div class="search-form">
+      <input type="search" class="search-form-input" placeholder="请输入关键字" onfocus="listenSearchFunc()">
+    </div>
+    <div class="search-result" data-resource="/search.xml"></div>
+  
+</div>
+
+  <aside id="sidebar" class="mdui-drawer">
+    <div class="mdui-tab" mdui-tab>
+        <a href="#sidebar-tab1" id="sidebartab" class="mdui-ripple mdui-tab-active">站点概览</a>
+        <a href="#sidebar-tab2" id="sidebartab" class="mdui-ripple">关于</a>
+    </div>
+
+    
+    <div id="sidebar-tab1" class="mdui-p-a-1">
+        <div class="mdui-list">
+            
+                
+                <a href="/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-home"></i>
+                    </div>
+                    <div class="mdui-list-item-content">主页</div>
+                </a>
+            
+                
+                <a href="/tags/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-bookmark"></i>
+                    </div>
+                    <div class="mdui-list-item-content">标签</div>
+                </a>
+            
+                
+                <a href="/categories/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-folder"></i>
+                    </div>
+                    <div class="mdui-list-item-content">分类</div>
+                </a>
+            
+                
+                <a href="/archives/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-archive"></i>
+                    </div>
+                    <div class="mdui-list-item-content">归档</div>
+                </a>
+            
+                
+                <a href="/tools/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-tools"></i>
+                    </div>
+                    <div class="mdui-list-item-content">工具箱</div>
+                </a>
+            
+                
+                <a href="/about/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-user"></i>
+                    </div>
+                    <div class="mdui-list-item-content">关于</div>
+                </a>
+            
+            <div class="mdui-list-item mdui-ripple">
+                <div class="mdui-list-item-icon">
+                    <i class="iconfont icon-moon"></i>
+                </div>
+                <div class="mdui-list-item-content">夜间模式</div>
+                <label class="mdui-switch" id="darkmode">
+                  <input type="checkbox" id="nightmode_switch"/>
+                  <i class="mdui-switch-icon"></i>
+                </label>
+            </div>           
+        </div>
+    </div>
+
+    
+    <div id="sidebar-tab2" class="mdui-p-a-1">
+        <div class="sidebar-overview">
+            <div class="sidebar-avatar">
+                
+                    <img src="/icons/avatar.gif"/>
+                
+            </div>
+            <div class="sidebar-author-name">Louis</div>
+            <div class="sidebar-description">A blog base on hexo,themes copy from https://github.com/kb1000fx/hexo-theme-meadow,thanks</div>
+        </div>
+        <div class="sidebar-links">
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-mail"></i></span>
+                    <a href="mailto:1598358615@qq.com" class="mdui-chip-title">E-Mail</a>
+                </div>
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-github"></i></span>
+                    <a target="_blank" rel="noopener" href="https://github.com/louispro" class="mdui-chip-title">GitHub</a>
+                </div>
+            
+        </div>
+        <ul class="mdui-list" mdui-collapse="{accordion: true}">
+            <li class="mdui-collapse-item">
+                <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-link"></i>
+                    </div>
+                    <div class="mdui-list-item-content">友情链接</div>
+                    <div class="mdui-collapse-item-arrow">
+                        <i class="mdui-list-item-icon iconfont icon-angle-down"></i>
+                    </div>
+                </div>
+                <ul id="linksList" class="mdui-collapse-item-body mdui-list mdui-list-dense">
+                    
+                        <a target="_blank" rel="noopener" href="https://garybear.cn/hexo-theme-meadow/" class="mdui-list-item mdui-ripple">
+                            Meadow说明文档
+                        </a>
+                    
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mdui-divider"></div>
+    
+    
+</aside>
+  
+  <main id="main-contain" class="mdui-container mdui-m-t-5">
+    <article id="article" class="mdui-card mdui-p-b-2 mdui-m-b-5">
+  <header class="mdui-card-media">
+    
+    
+      <div class="post-header"> 
+  <a class="post-header-title" href="/2021/09/25/SpringBoot%E9%9B%86%E6%88%90Junit5/">SpringBoot集成Junit5</a>
+  <div class="post-header-meta">
+    <span>
+      <span class="iconfont icon-calendar"></span>
+      发布于:&nbsp;2021-09-25
+    </span>
+    <span>
+      <span class="iconfont icon-calendar-check"></span>
+      更新于:&nbsp;2021-09-26
+    </span>
+    <span>
+      <span class="iconfont icon-folder"></span>
+      分类于:&nbsp;<a class="category-link" href="/categories/Java/">Java</a> > <a class="category-link" href="/categories/Java/SSM/">SSM</a>
+    </span>
+    
+      <span>
+        <span class="iconfont icon-eye"></span>
+        阅读次数:&nbsp;
+        <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
+      </span>
+    
+  </div>
+</div>   
+    
+
+
+
+    
+    
+    <div class="mdui-card-menu">
+    
+      <button class="mdui-btn mdui-btn-icon mdui-text-color-teal" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="iconfont icon-share"></i></button>
+      <ul class="mdui-menu" id="share_menu">
+        <li class="mdui-menu-item">
+          <a href="http://service.weibo.com/share/share.php?appkey=&title=SpringBoot集成Junit5&url=http://example.com/2021/09/25/SpringBoot%E9%9B%86%E6%88%90Junit5/&pic=http://example.com/null&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://twitter.com/intent/tweet?text=SpringBoot集成Junit5&url=http://example.com/2021/09/25/SpringBoot%E9%9B%86%E6%88%90Junit5/&via=Louis" target="_blank" class="mdui-ripple">分享到 Twitter</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=http://example.com/2021/09/25/SpringBoot%E9%9B%86%E6%88%90Junit5/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://plus.google.com/share?url=http://example.com/2021/09/25/SpringBoot%E9%9B%86%E6%88%90Junit5/" target="_blank" class="mdui-ripple">分享到 Google+</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://example.com/2021/09/25/SpringBoot%E9%9B%86%E6%88%90Junit5/&title=SpringBoot集成Junit5" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="http://connect.qq.com/widget/shareqq/index.html?site=Louis&title=SpringBoot集成Junit5&summary=A blog base on hexo,themes copy from https://github.com/kb1000fx/hexo-theme-meadow,thanks&pics=http://example.com/null&url=http://example.com/2021/09/25/SpringBoot%E9%9B%86%E6%88%90Junit5/" target="_blank" class="mdui-ripple">分享到 QQ</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://telegram.me/share/url?url=http://example.com/2021/09/25/SpringBoot%E9%9B%86%E6%88%90Junit5/&text=SpringBoot集成Junit5" target="_blank" class="mdui-ripple">分享到 Telegram</a>
+        </li>
+      </ul>
+    
+  </div>
+  </header>
+  
+  
+  
+  
+  <div class="post-tags">
+    
+      <i class="iconfont icon-tag">
+        <a rel="tag" href = /tags/Java-SSM/ >Java,SSM</a>
+      </i>
+    
+  </div>
+
+  
+  <div class="mdui-card-content mdui-typo mdui-p-x-4">
+    <div align="center"><img src="http://tva1.sinaimg.cn/large/006gOimwly1gusvxbos69j60hs0b4dhf02.jpg">
+
+</div>
+
+<span id="more"></span>
+
+<h2 id="一、Junit4和Junit5比较"><a href="#一、Junit4和Junit5比较" class="headerlink" title="一、Junit4和Junit5比较"></a>一、Junit4和Junit5比较</h2><h4 id="1-1、Junit4和Junit5注解"><a href="#1-1、Junit4和Junit5注解" class="headerlink" title="1.1、Junit4和Junit5注解"></a>1.1、Junit4和Junit5注解</h4><p>两个版本中的大多数注释都是相同的，但很少有区别。这是一个快速比较。</p>
+<table>
+<thead>
+<tr>
+<th align="left">特征</th>
+<th align="left">JUNIT 4</th>
+<th align="left">JUNIT 5</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">声明一种测试方法</td>
+<td align="left"><code>@Test</code></td>
+<td align="left"><code>@Test</code></td>
+</tr>
+<tr>
+<td align="left">在当前类中的所有测试方法之前执行</td>
+<td align="left"><code>@BeforeClass</code></td>
+<td align="left"><code>@BeforeAll</code></td>
+</tr>
+<tr>
+<td align="left">在当前类中的所有测试方法之后执行</td>
+<td align="left"><code>@AfterClass</code></td>
+<td align="left"><code>@AfterAll</code></td>
+</tr>
+<tr>
+<td align="left">在每个测试方法之前执行</td>
+<td align="left"><code>@Before</code></td>
+<td align="left"><code>@BeforeEach</code></td>
+</tr>
+<tr>
+<td align="left">每种测试方法后执行</td>
+<td align="left"><code>@After</code></td>
+<td align="left"><code>@AfterEach</code></td>
+</tr>
+<tr>
+<td align="left">禁用测试方法/类</td>
+<td align="left"><code>@Ignore</code></td>
+<td align="left"><code>@Disabled</code></td>
+</tr>
+<tr>
+<td align="left">测试工厂进行动态测试</td>
+<td align="left">NA</td>
+<td align="left"><code>@TestFactory</code></td>
+</tr>
+<tr>
+<td align="left">嵌套测试</td>
+<td align="left">NA</td>
+<td align="left"><code>@Nested</code></td>
+</tr>
+<tr>
+<td align="left">标记和过滤</td>
+<td align="left"><code>@Category</code></td>
+<td align="left"><code>@Tag</code></td>
+</tr>
+<tr>
+<td align="left">注册自定义扩展</td>
+<td align="left">NA</td>
+<td align="left"><code>@ExtendWith</code></td>
+</tr>
+</tbody></table>
+<h4 id="1-2、Junit4和Junit5之间的差异"><a href="#1-2、Junit4和Junit5之间的差异" class="headerlink" title="1.2、Junit4和Junit5之间的差异"></a>1.2、Junit4和Junit5之间的差异</h4><p>JUnit 4将所有内容捆绑到单个jar文件中。</p>
+<p>Junit 5由3个子项目组成，即JUnit Platform，JUnit Jupiter和JUnit Vintage。</p>
+<ol>
+<li><p>JUnit平台</p>
+<p>它定义了<code>TestEngine</code>用于开发在平台上运行的新测试框架的API。</p>
+</li>
+<li><p>JUnit Jupiter</p>
+<p>它具有所有新的junit注释和<code>TestEngine</code>实现，以运行使用这些注释编写的测试。</p>
+</li>
+<li><p>JUnit Vintage</p>
+<p>支持在JUnit 5平台上运行JUnit 3和JUnit 4编写的测试。</p>
+</li>
+</ol>
+<h2 id="二、Junit5"><a href="#二、Junit5" class="headerlink" title="二、Junit5"></a>二、Junit5</h2><h4 id="2-1、常用注解"><a href="#2-1、常用注解" class="headerlink" title="2.1、常用注解"></a>2.1、常用注解</h4><p><code>@DisplyaName</code></p>
+<p>其完整定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target(&#123; ElementType.TYPE, ElementType.METHOD &#125;)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@API(status = STABLE, since = &quot;5.0&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> DisplayName &#123;</span><br><span class="line">	<span class="function">String <span class="title">value</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>@DisplayName</code>测试用于设置测试类和测试方法的名称</p>
+<p><code>@Disable</code>:</p>
+<p>禁用执行测试，在运行测试类的时候，会跳过添加了@Disable注解的方法。</p>
+<p><code>@Nested</code></p>
+<p>内嵌测试类，当我们编写的类和代码逐渐增多，随之而来的需要测试的对应测试类也会越来越多。为了解决测试类数量爆炸的问题，JUnit 5提供了@Nested 注解，能够以静态内部成员类的形式对测试用例类进行逻辑分组。 并且每个静态内部类都可以有自己的生命周期方法， 这些方法将按从外到内层次顺序执行。</p>
+<p>示例如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DisplayName(&quot;内嵌测试类&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NestUnitTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@BeforeEach</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;测试方法执行前准备&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Nested</span></span><br><span class="line">    <span class="meta">@DisplayName(&quot;第一个内嵌测试类&quot;)</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">FirstNestTest</span> </span>&#123;</span><br><span class="line">        <span class="meta">@Test</span></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;第一个内嵌测试类执行测试&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Nested</span></span><br><span class="line">    <span class="meta">@DisplayName(&quot;第二个内嵌测试类&quot;)</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">SecondNestTest</span> </span>&#123;</span><br><span class="line">        <span class="meta">@Test</span></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;第二个内嵌测试类执行测试&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>重复性测试</p>
+<p><code>@RepeatedTest</code>，允许让测试方法进行重复运行。当要运行一个测试方法N次时 ，可以使用@RepeatedTest标记它，如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DisplayName(&quot;自定义名称重复测试&quot;)</span></span><br><span class="line"><span class="meta">@RepeatedTest(value = 3, name = &quot;&#123;displayName&#125; 第 &#123;currentRepetition&#125; 次&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">i_am_a_repeated_test_2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;执行测试&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参数化设置：</p>
+<p>参数化测试可以按照多个参数分别运行多次单元测试这里有点类似于重复性测试，只不过每次运行传入的参数不用。需要使用到<code>@ParameterizedTest</code>，同时也需要<code>@ValueSource</code>提供一组数据，它支持八种基本类型以及<code>String</code>和自定义对象类型，使用极其方便。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ParameterizedTest</span></span><br><span class="line"><span class="meta">@ValueSource(ints = &#123;1, 2, 3&#125;)</span></span><br><span class="line"><span class="meta">@DisplayName(&quot;参数化测试&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">paramTest</span><span class="params">(<span class="keyword">int</span> a)</span> </span>&#123;</span><br><span class="line">    assertTrue(a &gt; <span class="number">0</span> &amp;&amp; a &lt; <span class="number">4</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参数化设置除了基本数据源@ValueSource之外，还有CSV数据源@CsvSource:</p>
+<p>@CsvSource可以注入指定csv格式的一组来匹配一个测试方法对应的参数，示例如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ParameterizedTest</span></span><br><span class="line"><span class="meta">@CsvSource(&#123;&quot;1,One&quot;, &quot;2,Two&quot;, &quot;3,Three&quot;&#125;)</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testDataFromCsv</span><span class="params">(<span class="keyword">long</span> id, String name)</span> </span>&#123;</span><br><span class="line">	System.out.printf(<span class="string">&quot;id: %d, name: %s&quot;</span>, id, name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于@CsvSource数据源，它还允许读取外部 CSV格式文件作为数据源，只需要用@CsvSource指定资源文件路径即可。</p>
+<p>除了上述两种数据源之外，Junit5还提供了以下三种数据源：</p>
+<ul>
+<li><strong>@EnumSource</strong>：允许我们通过参数值，给指定 Enum 枚举类型传入，构造出枚举类型中特定的值。</li>
+<li><strong>@MethodSource</strong>：指定一个返回的 Stream / Array / 可迭代对象 的方法作为数据源。 需要注意的是该方法必须是静态的，并且不能接受任何参数。</li>
+<li><strong>@ArgumentSource</strong>：通过实现 ArgumentsProvider 接口的参数类来作为数据源，重写它的 <code>provideArguments</code> 方法可以返回自定义类型的 Stream<Arguments> ，作为测试方法所需要的数据使用。</Arguments></li>
+</ul>
+<h4 id="2-2、断言"><a href="#2-2、断言" class="headerlink" title="2.2、断言"></a>2.2、断言</h4><p><code>assertTrue</code>与<code>assertFalse</code>用来判断条件是否为<code>true</code>或<code>false</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="meta">@DisplayName(&quot;测试断言equals&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testEquals</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    assertTrue(<span class="number">3</span> &lt; <span class="number">4</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>assertNull</code>与<code>assertNotNull</code>用来判断条件是否为·<code>null</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="meta">@DisplayName(&quot;测试断言NotNull&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testNotNull</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    assertNotNull(<span class="keyword">new</span> Object());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>assertThrows</code>用来判断执行抛出的异常是否符合预期，并可以使用异常类型接收返回值进行其他操作</p>
+<p><code>assertTimeout</code>用来判断执行过程是否超时</p>
+<p><code>assertAll</code>是组合断言，当它内部所有断言正确执行完才算通过</p>
+
+  </div>
+  <!--文末结束语-->
+  
+    <div style="text-align:center;color: #ccc;font-size:24px;"> --- 本文结束 <i class="iconfont icon-heartbeat" style="font-size:24px;"></i> The End --- </div>
+  
+  <!--页脚广告-->
+  
+  <div class="mdui-divider"></div>
+  
+  <nav>
+    
+      <a rel="prev" class="post-nav-item mdui-float-left" href="/2021/09/26/Springboot%E9%9B%86%E6%88%90Swagger2/">
+        <i class="iconfont icon-angle-left"></i>
+        <span>Springboot集成Swagger3</span>
+      </a>
+    
+    
+      <a rel="next" class="post-nav-item mdui-float-right" href="/2021/09/25/SpringBoot%E9%9B%86%E6%88%90%E5%9C%BA%E6%99%AF%E5%A4%A7%E5%85%A8/">
+        <span>SpringBoot集成场景大全</span>
+        <i class="iconfont icon-angle-right"></i>
+      </a>
+    
+  </nav>
+</article>
+
+
+
+
+  <div class="toc-button"  style="z-index: 100;">
+    <button class="mdui-fab mdui-ripple mdui-color-teal" mdui-menu="{target: '#toc'}"><i class="iconfont icon-list"></i></button>
+    <ul class="mdui-menu" id="toc">
+      <li class="mdui-menu-item">
+        <a href="/2021/09/25/SpringBoot%E9%9B%86%E6%88%90Junit5/" id="toc-header" class="mdui-ripple">文章目录</a>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Junit4%E5%92%8CJunit5%E6%AF%94%E8%BE%83"><span class="toc-number">1.</span> <span class="toc-text">一、Junit4和Junit5比较</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1%E3%80%81Junit4%E5%92%8CJunit5%E6%B3%A8%E8%A7%A3"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.1、Junit4和Junit5注解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2%E3%80%81Junit4%E5%92%8CJunit5%E4%B9%8B%E9%97%B4%E7%9A%84%E5%B7%AE%E5%BC%82"><span class="toc-number">1.0.2.</span> <span class="toc-text">1.2、Junit4和Junit5之间的差异</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Junit5"><span class="toc-number">2.</span> <span class="toc-text">二、Junit5</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1%E3%80%81%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3"><span class="toc-number">2.0.1.</span> <span class="toc-text">2.1、常用注解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2%E3%80%81%E6%96%AD%E8%A8%80"><span class="toc-number">2.0.2.</span> <span class="toc-text">2.2、断言</span></a></li></ol></li></ol></li></ol>
+      </li>
+    </ul>
+  </div>
+
+
+
+    <div id="comment" class="mdui-card mdui-p-a-2 mdui-m-b-5">
+      <div class="mdui-tab" mdui-tab>
+        
+          <a href="#comment-tab0" class="mdui-ripple">gitalk</a>
+        
+          <a href="#comment-tab1" class="mdui-ripple">livere</a>
+        
+      </div>
+      
+        <div id="comment-tab0" class="mdui-p-a-2">
+          <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+<script>
+  var gitalk = new Gitalk({
+    clientID: '',
+    clientSecret: '',
+    repo: '',
+    owner: '',
+    admin: [''],
+    id:  md5(location.pathname) ,
+    distractionFreeMode: 'true',
+  });
+  gitalk.render('gitalk-container');
+</script>
+        </div>
+      
+        <div id="comment-tab1" class="mdui-p-a-2">
+          <div id="lv-container" data-id="city" data-uid="">
+  <script type="text/javascript">
+    (function (d, s) {
+      var j, e = d.getElementsByTagName(s)[0];
+      if (typeof LivereTower === 'function') { return; }
+      j = d.createElement(s);
+      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+      j.async = true;
+      e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  </script>
+  <noscript>Please enable JavaScript to view the comments powered by LiveRe.</noscript>
+</div>
+        </div>
+      
+    </div>
+
+  </main>
+  <footer id="footer" class="mdui-text-center mdui-m-t-5 mdui-p-b-2 mdui-p-t-4 mdui-color-theme">
+  <div class="mdui-container">
+    <div class="mdui-row">
+      
+        <a href="https://beian.miit.gov.cn" rel="noopener" target="_blank"></a>
+      
+      <span>
+        &copy; 2015 - 2021 
+        
+          <span style="color:#d9333f" class="iconfont icon-heart"></span>
+        
+        Louis
+      </span>
+    </div>
+    <div class="mdui-row">
+      
+        <div class="mdui-col-xs-6 mdui-text-right">
+          <span>Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a></span>
+        </div>
+        <div class="mdui-col-xs-6 mdui-text-left">
+          <span>Theme: <a href="https://github.com/kb1000fx/Meadow" rel="noopener" target="_blank">Meadow</a></span>
+        </div>
+      
+    </div>
+    <div class="mdui-row">
+      
+        <div class="mdui-col-xs-6 mdui-text-right">
+          <span id="busuanzi_container_site_uv" style="display: none;"> <span class="iconfont icon-user"></span>总访客量 <span id="busuanzi_value_site_uv"></span></span>
+        </div>
+        <div class="mdui-col-xs-6 mdui-text-left">
+          <span id="busuanzi_container_site_pv" style="display: none;"> <span class="iconfont icon-eye"></span>总访问量 <span id="busuanzi_value_site_pv"></span></span>
+        </div>
+      
+    </div>
+ </div>
+</footer>
+  
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-teal" style="z-index:100;"><i class="iconfont icon-arrowup"></i></button>
+  
+  
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({
+        startOnLoad: true,
+        theme: "default"
+    });</script>
+
+
+
+
+    
+<script src="/js/mdui.min.v1.0.0.js"></script>
+
+
+
+
+<script src="/js/meadow.js"></script>
+
+</body>
+</html >
