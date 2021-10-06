@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <script>if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode)) window.location.href="https://support.dmeng.net/upgrade-your-browser.html?referrer="+encodeURIComponent(window.location.href); </script>
+    
+    
+        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Regular.woff2" as="font">
+        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Bold.woff2" as="font">
+    
+    
+    
+        <link rel="shortcut icon" href="/icons/favicon.ico">
+    
+
+    
+    
+        
+<link rel="stylesheet" href="/css/mdui.min.v1.0.0.css">
+
+    
+    
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/iconfont.css">
+
+
+    
+    
+
+    
+        <script data-ad-client="ca-" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+          
+
+
+    
+    
+    <title>
+        
+            mysql子查询和窗口函数 | Louis
+        
+    </title>
+    
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-teal mdui-theme-accent-blue">
+  
+  <header class="mdui-appbar mdui-appbar-fixed">
+  <div id="toolbar" class="mdui-toolbar mdui-color-theme">
+    <button class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="iconfont icon-menu"></i></button>
+    <a href="/" class="mdui-typo-headline">Louis</a>
+    <a href="/" class="header-subtitle mdui-typo-headline">天天向上</a>
+    <div class="mdui-toolbar-spacer"></div>
+    <button class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: 'search'}"><i class="iconfont icon-search"></i></button>
+  </div>
+</header>
+
+<div class="mdui-dialog" id="search">
+  
+    <div class="search-form">
+      <input type="search" class="search-form-input" placeholder="请输入关键字" onfocus="listenSearchFunc()">
+    </div>
+    <div class="search-result" data-resource="/search.xml"></div>
+  
+</div>
+
+  <aside id="sidebar" class="mdui-drawer">
+    <div class="mdui-tab" mdui-tab>
+        <a href="#sidebar-tab1" id="sidebartab" class="mdui-ripple mdui-tab-active">站点概览</a>
+        <a href="#sidebar-tab2" id="sidebartab" class="mdui-ripple">关于</a>
+    </div>
+
+    
+    <div id="sidebar-tab1" class="mdui-p-a-1">
+        <div class="mdui-list">
+            
+                
+                <a href="/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-home"></i>
+                    </div>
+                    <div class="mdui-list-item-content">主页</div>
+                </a>
+            
+                
+                <a href="/tags/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-bookmark"></i>
+                    </div>
+                    <div class="mdui-list-item-content">标签</div>
+                </a>
+            
+                
+                <a href="/categories/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-folder"></i>
+                    </div>
+                    <div class="mdui-list-item-content">分类</div>
+                </a>
+            
+                
+                <a href="/archives/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-archive"></i>
+                    </div>
+                    <div class="mdui-list-item-content">归档</div>
+                </a>
+            
+                
+                <a href="/tools/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-tools"></i>
+                    </div>
+                    <div class="mdui-list-item-content">工具箱</div>
+                </a>
+            
+                
+                <a href="/about/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-user"></i>
+                    </div>
+                    <div class="mdui-list-item-content">关于</div>
+                </a>
+            
+            <div class="mdui-list-item mdui-ripple">
+                <div class="mdui-list-item-icon">
+                    <i class="iconfont icon-moon"></i>
+                </div>
+                <div class="mdui-list-item-content">夜间模式</div>
+                <label class="mdui-switch" id="darkmode">
+                  <input type="checkbox" id="nightmode_switch"/>
+                  <i class="mdui-switch-icon"></i>
+                </label>
+            </div>           
+        </div>
+    </div>
+
+    
+    <div id="sidebar-tab2" class="mdui-p-a-1">
+        <div class="sidebar-overview">
+            <div class="sidebar-avatar">
+                
+                    <img src="/icons/avatar.gif"/>
+                
+            </div>
+            <div class="sidebar-author-name">Louis</div>
+            <div class="sidebar-description">A blog base on hexo,themes copy from https://github.com/kb1000fx/hexo-theme-meadow,thanks</div>
+        </div>
+        <div class="sidebar-links">
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-mail"></i></span>
+                    <a href="mailto:1598358615@qq.com" class="mdui-chip-title">E-Mail</a>
+                </div>
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-github"></i></span>
+                    <a target="_blank" rel="noopener" href="https://github.com/louispro" class="mdui-chip-title">GitHub</a>
+                </div>
+            
+        </div>
+        <ul class="mdui-list" mdui-collapse="{accordion: true}">
+            <li class="mdui-collapse-item">
+                <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-link"></i>
+                    </div>
+                    <div class="mdui-list-item-content">友情链接</div>
+                    <div class="mdui-collapse-item-arrow">
+                        <i class="mdui-list-item-icon iconfont icon-angle-down"></i>
+                    </div>
+                </div>
+                <ul id="linksList" class="mdui-collapse-item-body mdui-list mdui-list-dense">
+                    
+                        <a target="_blank" rel="noopener" href="https://garybear.cn/hexo-theme-meadow/" class="mdui-list-item mdui-ripple">
+                            Meadow说明文档
+                        </a>
+                    
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mdui-divider"></div>
+    
+    
+</aside>
+  
+  <main id="main-contain" class="mdui-container mdui-m-t-5">
+    <article id="article" class="mdui-card mdui-p-b-2 mdui-m-b-5">
+  <header class="mdui-card-media">
+    
+    
+      <div class="post-header"> 
+  <a class="post-header-title" href="/2021/10/04/mysql%E5%AD%90%E6%9F%A5%E8%AF%A2%E5%92%8C%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/">mysql子查询和窗口函数</a>
+  <div class="post-header-meta">
+    <span>
+      <span class="iconfont icon-calendar"></span>
+      发布于:&nbsp;2021-10-04
+    </span>
+    <span>
+      <span class="iconfont icon-calendar-check"></span>
+      更新于:&nbsp;2021-10-04
+    </span>
+    <span>
+      <span class="iconfont icon-folder"></span>
+      分类于:&nbsp;<a class="category-link" href="/categories/Mysql/">Mysql</a> > <a class="category-link" href="/categories/Mysql/Mysql%E5%9F%BA%E7%A1%80/">Mysql基础</a>
+    </span>
+    
+      <span>
+        <span class="iconfont icon-eye"></span>
+        阅读次数:&nbsp;
+        <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
+      </span>
+    
+  </div>
+</div>   
+    
+
+
+
+    
+    
+    <div class="mdui-card-menu">
+    
+      <button class="mdui-btn mdui-btn-icon mdui-text-color-teal" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="iconfont icon-share"></i></button>
+      <ul class="mdui-menu" id="share_menu">
+        <li class="mdui-menu-item">
+          <a href="http://service.weibo.com/share/share.php?appkey=&title=mysql子查询和窗口函数&url=http://example.com/2021/10/04/mysql%E5%AD%90%E6%9F%A5%E8%AF%A2%E5%92%8C%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/&pic=http://example.com/null&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://twitter.com/intent/tweet?text=mysql子查询和窗口函数&url=http://example.com/2021/10/04/mysql%E5%AD%90%E6%9F%A5%E8%AF%A2%E5%92%8C%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/&via=Louis" target="_blank" class="mdui-ripple">分享到 Twitter</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=http://example.com/2021/10/04/mysql%E5%AD%90%E6%9F%A5%E8%AF%A2%E5%92%8C%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://plus.google.com/share?url=http://example.com/2021/10/04/mysql%E5%AD%90%E6%9F%A5%E8%AF%A2%E5%92%8C%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" target="_blank" class="mdui-ripple">分享到 Google+</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://example.com/2021/10/04/mysql%E5%AD%90%E6%9F%A5%E8%AF%A2%E5%92%8C%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/&title=mysql子查询和窗口函数" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="http://connect.qq.com/widget/shareqq/index.html?site=Louis&title=mysql子查询和窗口函数&summary=A blog base on hexo,themes copy from https://github.com/kb1000fx/hexo-theme-meadow,thanks&pics=http://example.com/null&url=http://example.com/2021/10/04/mysql%E5%AD%90%E6%9F%A5%E8%AF%A2%E5%92%8C%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" target="_blank" class="mdui-ripple">分享到 QQ</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://telegram.me/share/url?url=http://example.com/2021/10/04/mysql%E5%AD%90%E6%9F%A5%E8%AF%A2%E5%92%8C%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/&text=mysql子查询和窗口函数" target="_blank" class="mdui-ripple">分享到 Telegram</a>
+        </li>
+      </ul>
+    
+  </div>
+  </header>
+  
+  
+  
+  
+  <div class="post-tags">
+    
+      <i class="iconfont icon-tag">
+        <a rel="tag" href = /tags/Mysql/ >Mysql</a>
+      </i>
+    
+  </div>
+
+  
+  <div class="mdui-card-content mdui-typo mdui-p-x-4">
+    <div align="center">
+
+<p><img src="/2021/10/04/mysql%E5%AD%90%E6%9F%A5%E8%AF%A2%E5%92%8C%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/mysql.png" alt="mysql"></p>
+</div>
+
+<span id="more"></span>
+
+<p><strong>本博客参考<a target="_blank" rel="noopener" href="http://www.itsoku.com/article/210%EF%BC%8Chttps://www.cxyzjd.com/article/Trisyp/78460289%E4%B9%A6%E5%86%99%EF%BC%81">http://www.itsoku.com/article/210，https://www.cxyzjd.com/article/Trisyp/78460289书写！</a></strong></p>
+<h2 id="一、子查询简介"><a href="#一、子查询简介" class="headerlink" title="一、子查询简介"></a>一、子查询简介</h2><p><strong>定义</strong>：一个内层查询语句块可以嵌套在另外一个外层查询块的where子句中，其中外层查询称为父查询，主查询，内层查询也称为子查询。子查询一般不使用order by子句，一般只对最终结果进行排序。子查询也称为嵌套查询，这种内外嵌套的查询方式其查询顺序是由内向外查询，子查询不仅可以用在select语句中，还可以用在inset，update，delete语句中。</p>
+<p>本文主要讲解select语句中的子查询。</p>
+<h2 id="二、子查询分类"><a href="#二、子查询分类" class="headerlink" title="二、子查询分类"></a>二、子查询分类</h2><p>按子查询的结果的行列数不同可以将子查询分为4种：</p>
+<ul>
+<li>标量子查询（结果集一行一列）</li>
+<li>列子查询（多行一列）</li>
+<li>行子查询（一行多列）</li>
+<li>表子查询（多行多列）</li>
+</ul>
+<p>子查询可以可以出现在select语句中如下位置：</p>
+<ul>
+<li>select字段列表中（仅支持标量子查询）</li>
+<li>from子句后面（支持表子查询）</li>
+<li>where子句后面（支持标量/列/行子查询）</li>
+<li>having子句后满 （支持标量/列/行子查询）</li>
+<li>exists后面（表子查询）</li>
+</ul>
+<p>测试数据：<a target="_blank" rel="noopener" href="http://www.itsoku.com/article/209">http://www.itsoku.com/article/209</a></p>
+<h4 id="2-1、select字段列表中"><a href="#2-1、select字段列表中" class="headerlink" title="2.1、select字段列表中"></a>2.1、select字段列表中</h4><p>子查询位于select后面，仅支持标量子查询</p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#查询每个部门员工个数</span><br><span class="line">SELECT </span><br><span class="line">a.*,</span><br><span class="line">(SELECT COUNT(*)</span><br><span class="line">FROM employees b</span><br><span class="line">WHERE b.department_id=a.department_id) AS 员工个数</span><br><span class="line">FROM departments a;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2、from后面的子查询"><a href="#2-2、from后面的子查询" class="headerlink" title="2.2、from后面的子查询"></a>2.2、from后面的子查询</h4><p>将子查询的结果充当一张表，且必须起别名，否则这个表将找不到。from后面的子查询仅支持表子查询。</p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#查询每个部门平均工资的工资等级</span><br><span class="line">SELECT</span><br><span class="line">  t1.department_id,</span><br><span class="line">  sa AS &#x27;平均工资&#x27;,</span><br><span class="line">  t2.grade_level</span><br><span class="line">FROM (SELECT</span><br><span class="line">        department_id,</span><br><span class="line">        avg(a.salary) sa</span><br><span class="line">      FROM employees a</span><br><span class="line">      GROUP BY a.department_id) t1, job_grades t2</span><br><span class="line">WHERE</span><br><span class="line">  t1.sa BETWEEN t2.lowest_sal AND t2.highest_sal</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-3、where和having后面的子查询"><a href="#2-3、where和having后面的子查询" class="headerlink" title="2.3、where和having后面的子查询"></a>2.3、where和having后面的子查询</h4><p>where和having后面支持标量子查询，列子查询和行子查询。</p>
+<p>特点：</p>
+<ol>
+<li><p>子查询放在小括号内</p>
+</li>
+<li><p>子查询一般放在条件的右侧</p>
+</li>
+<li><p>标量子查询，一般搭配着单行单列操作符使用&gt;,&lt;,&gt;=,&lt;=,=,&lt;&gt;,!=,其中&lt;&gt;表示不等于。</p>
+</li>
+<li><p>列子查询一般搭配着多行操作符使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">in(not in)：列表中的“任意一个”</span><br><span class="line"></span><br><span class="line">any或者some：和子查询返回的“某一个值”比较，比如a&gt;some(10,20,30)，a大于子查询中任意一个即可，a大于子查询中最小值即可，等同于a&gt;min(10,20,30)。</span><br><span class="line"></span><br><span class="line">all：和子查询返回的“所有值”比较，比如a&gt;all(10,20,30)，a大于子查询中所有值，换句话说，a大于子查询中最大值即可满足查询条件，等同于a&gt;max(10,20,30);</span><br></pre></td></tr></table></figure></li>
+<li><p>子查询的执行优先于主查询执行，因为主查询的条件用到了子查询的结果。</p>
+</li>
+</ol>
+<h5 id="2-3-1、标量子查询"><a href="#2-3-1、标量子查询" class="headerlink" title="2.3.1、标量子查询"></a>2.3.1、标量子查询</h5><p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/*②查询员工信息，满足salary&gt;①的结果*/</span><br><span class="line">SELECT *</span><br><span class="line">FROM employees a</span><br><span class="line">WHERE a.salary &gt; (SELECT salary</span><br><span class="line">                  FROM employees</span><br><span class="line">                  WHERE last_name = &#x27;Abel&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-3-2、列子查询"><a href="#2-3-2、列子查询" class="headerlink" title="2.3.2、列子查询"></a>2.3.2、列子查询</h5><p>列子查询需要搭配多行操作符 使用：in(not in),any/some/all.</p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/*②查询员工姓名，要求部门是①列表中的某一个*/</span><br><span class="line">SELECT a.last_name</span><br><span class="line">FROM employees a</span><br><span class="line">WHERE a.department_id IN (SELECT DISTINCT department_id</span><br><span class="line">                          FROM departments</span><br><span class="line">                          WHERE location_id IN (1400, 1700))</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.3.4、行子查询</strong></p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#查询员工编号最小且工资最高的员工信息</span><br><span class="line">SELECT *</span><br><span class="line">FROM employees a</span><br><span class="line">WHERE a.employee_id = (SELECT min(employee_id)</span><br><span class="line">                       FROM employees)</span><br><span class="line">      AND salary = (SELECT max(salary)</span><br><span class="line">                    FROM employees)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-4、exists后面（也称为相关子查询）"><a href="#2-4、exists后面（也称为相关子查询）" class="headerlink" title="2.4、exists后面（也称为相关子查询）"></a>2.4、exists后面（也称为相关子查询）</h4><p>语法：exists(完整的子查询语句)</p>
+<p>一般来说exists都能用in代替</p>
+<h2 id="三、窗口函数"><a href="#三、窗口函数" class="headerlink" title="三、窗口函数"></a>三、窗口函数</h2><h2 id="四、补充"><a href="#四、补充" class="headerlink" title="四、补充"></a>四、补充</h2><p>主键自增auto_increment:</p>
+<p>在建表的时候往往会把主键设置为自增，可以在建表时可用<code>AUTO_INCREMENT=n</code>选项来指定一个自增的初始值。</p>
+<p><code>AUTO_INCREMENT</code>说明：</p>
+<ol>
+<li>如果把一个NULL插入到一个AUTO_INCREMENT数据列里去，<a target="_blank" rel="noopener" href="http://lib.csdn.net/base/mysql">MySQL</a>将自动生成下一个序列编号。编号从1开始，并1为基数递增。</li>
+<li>把0插入AUTO_INCREMENT数据列的效果与插入NULL值一样。但不建议这样做，还是以插入NULL值为好。</li>
+<li>当插入记录时，没有为AUTO_INCREMENT明确指定值，则等同插入NULL值。</li>
+<li>当插入记录时，如果为AUTO_INCREMENT数据列明确指定了一个数值，则会出现两种情况，情况一，如果插入的值与已有的编号重复，则会出现出错信息，因为AUTO_INCREMENT数据列的值必须是唯一的；情况二，如果插入的值大于已编号的值，则会把该插入到数据列中，并使在下一个编号将从这个新值开始递增。也就是说，可以跳过一些编号。</li>
+<li>如果用UPDATE命令更新自增列，如果列值与已有的值重复，则会出错。如果大于已有值，则下一个编号从该值开始递增。</li>
+</ol>
+
+  </div>
+  <!--文末结束语-->
+  
+    <div style="text-align:center;color: #ccc;font-size:24px;"> --- 本文结束 <i class="iconfont icon-heartbeat" style="font-size:24px;"></i> The End --- </div>
+  
+  <!--页脚广告-->
+  
+  <div class="mdui-divider"></div>
+  
+  <nav>
+    
+      <a rel="prev" class="post-nav-item mdui-float-left" href="/2021/10/05/mysql%E5%87%BD%E6%95%B0/">
+        <i class="iconfont icon-angle-left"></i>
+        <span>mysql函数</span>
+      </a>
+    
+    
+      <a rel="next" class="post-nav-item mdui-float-right" href="/2021/10/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1%E8%AF%A6%E8%A7%A3/">
+        <span>数据库事务详解</span>
+        <i class="iconfont icon-angle-right"></i>
+      </a>
+    
+  </nav>
+</article>
+
+
+
+
+  <div class="toc-button"  style="z-index: 100;">
+    <button class="mdui-fab mdui-ripple mdui-color-teal" mdui-menu="{target: '#toc'}"><i class="iconfont icon-list"></i></button>
+    <ul class="mdui-menu" id="toc">
+      <li class="mdui-menu-item">
+        <a href="/2021/10/04/mysql%E5%AD%90%E6%9F%A5%E8%AF%A2%E5%92%8C%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" id="toc-header" class="mdui-ripple">文章目录</a>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AD%90%E6%9F%A5%E8%AF%A2%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">一、子查询简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AD%90%E6%9F%A5%E8%AF%A2%E5%88%86%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">二、子查询分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1%E3%80%81select%E5%AD%97%E6%AE%B5%E5%88%97%E8%A1%A8%E4%B8%AD"><span class="toc-number">2.0.1.</span> <span class="toc-text">2.1、select字段列表中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2%E3%80%81from%E5%90%8E%E9%9D%A2%E7%9A%84%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.0.2.</span> <span class="toc-text">2.2、from后面的子查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3%E3%80%81where%E5%92%8Chaving%E5%90%8E%E9%9D%A2%E7%9A%84%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.0.3.</span> <span class="toc-text">2.3、where和having后面的子查询</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-1%E3%80%81%E6%A0%87%E9%87%8F%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.0.3.1.</span> <span class="toc-text">2.3.1、标量子查询</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-2%E3%80%81%E5%88%97%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.0.3.2.</span> <span class="toc-text">2.3.2、列子查询</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4%E3%80%81exists%E5%90%8E%E9%9D%A2%EF%BC%88%E4%B9%9F%E7%A7%B0%E4%B8%BA%E7%9B%B8%E5%85%B3%E5%AD%90%E6%9F%A5%E8%AF%A2%EF%BC%89"><span class="toc-number">2.0.4.</span> <span class="toc-text">2.4、exists后面（也称为相关子查询）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text">三、窗口函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%A1%A5%E5%85%85"><span class="toc-number">4.</span> <span class="toc-text">四、补充</span></a></li></ol>
+      </li>
+    </ul>
+  </div>
+
+
+
+    <div id="comment" class="mdui-card mdui-p-a-2 mdui-m-b-5">
+      <div class="mdui-tab" mdui-tab>
+        
+          <a href="#comment-tab0" class="mdui-ripple">gitalk</a>
+        
+          <a href="#comment-tab1" class="mdui-ripple">livere</a>
+        
+      </div>
+      
+        <div id="comment-tab0" class="mdui-p-a-2">
+          <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+<script>
+  var gitalk = new Gitalk({
+    clientID: '',
+    clientSecret: '',
+    repo: '',
+    owner: '',
+    admin: [''],
+    id:  md5(location.pathname) ,
+    distractionFreeMode: 'true',
+  });
+  gitalk.render('gitalk-container');
+</script>
+        </div>
+      
+        <div id="comment-tab1" class="mdui-p-a-2">
+          <div id="lv-container" data-id="city" data-uid="">
+  <script type="text/javascript">
+    (function (d, s) {
+      var j, e = d.getElementsByTagName(s)[0];
+      if (typeof LivereTower === 'function') { return; }
+      j = d.createElement(s);
+      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+      j.async = true;
+      e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  </script>
+  <noscript>Please enable JavaScript to view the comments powered by LiveRe.</noscript>
+</div>
+        </div>
+      
+    </div>
+
+  </main>
+  <footer id="footer" class="mdui-text-center mdui-m-t-5 mdui-p-b-2 mdui-p-t-4 mdui-color-theme">
+  <div class="mdui-container">
+    <div class="mdui-row">
+      
+        <a href="https://beian.miit.gov.cn" rel="noopener" target="_blank"></a>
+      
+      <span>
+        &copy; 2015 - 2021 
+        
+          <span style="color:#d9333f" class="iconfont icon-heart"></span>
+        
+        Louis
+      </span>
+    </div>
+    <div class="mdui-row">
+      
+        <div class="mdui-col-xs-6 mdui-text-right">
+          <span>Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a></span>
+        </div>
+        <div class="mdui-col-xs-6 mdui-text-left">
+          <span>Theme: <a href="https://github.com/kb1000fx/Meadow" rel="noopener" target="_blank">Meadow</a></span>
+        </div>
+      
+    </div>
+    <div class="mdui-row">
+      
+        <div class="mdui-col-xs-6 mdui-text-right">
+          <span id="busuanzi_container_site_uv" style="display: none;"> <span class="iconfont icon-user"></span>总访客量 <span id="busuanzi_value_site_uv"></span></span>
+        </div>
+        <div class="mdui-col-xs-6 mdui-text-left">
+          <span id="busuanzi_container_site_pv" style="display: none;"> <span class="iconfont icon-eye"></span>总访问量 <span id="busuanzi_value_site_pv"></span></span>
+        </div>
+      
+    </div>
+ </div>
+</footer>
+  
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-teal" style="z-index:100;"><i class="iconfont icon-arrowup"></i></button>
+  
+  
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({
+        startOnLoad: true,
+        theme: "default"
+    });</script>
+
+
+
+
+    
+<script src="/js/mdui.min.v1.0.0.js"></script>
+
+
+
+
+<script src="/js/meadow.js"></script>
+
+</body>
+</html >

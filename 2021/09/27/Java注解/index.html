@@ -307,7 +307,7 @@
 <h2 id="二、基本Annotation"><a href="#二、基本Annotation" class="headerlink" title="二、基本Annotation"></a>二、基本<code>Annotation</code></h2><h4 id="2-1、-Override"><a href="#2-1、-Override" class="headerlink" title="2.1、@Override"></a>2.1、<code>@Override</code></h4><p>标记方法重载</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target(ElementType.METHOD)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.SOURCE)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Override&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="2-2、-Depercated"><a href="#2-2、-Depercated" class="headerlink" title="2.2、@Depercated"></a>2.2、@Depercated</h4><p><code>@Depercated</code>用于表示某个类，方法，成员变量等已经过时，当其他程序使用已过时的类，方法时，编译器将会给出警告。</p>
+<h4 id="2-2、-Depercated"><a href="#2-2、-Depercated" class="headerlink" title="2.2、@Depercated"></a>2.2、<code>@Depercated</code></h4><p><code>@Depercated</code>用于表示某个类，方法，成员变量等已经过时，当其他程序使用已过时的类，方法时，编译器将会给出警告。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Target(value=&#123;CONSTRUCTOR,FIELD,LOCAL_VARIABLE,METHOD,PACKAGE,MODULE,PARAMETER,TYPE&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Deprecated&#123;</span><br><span class="line">    <span class="function">String <span class="title">since</span><span class="params">()</span> <span class="keyword">default</span> &quot;&quot;</span>;	<span class="comment">//说明什么时候开始过时</span></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">forRemoval</span><span class="params">()</span> <span class="keyword">default</span>  <span class="keyword">false</span></span>;	<span class="comment">//指明是否将被移除</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="2-3、-SuppressWarnings"><a href="#2-3、-SuppressWarnings" class="headerlink" title="2.3、@SuppressWarnings"></a>2.3、<code>@SuppressWarnings</code></h4><p><code>@SuppressWarnings</code>指示被该<code>Annotation</code>修饰的程序元素取消显示指定的编译器警告。<code>@SuppressWarnings</code>会一直作用于该程序元素的所有子元素。</p>
@@ -315,31 +315,31 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">list.add(<span class="number">20</span>); <span class="comment">//添加元素引发unchecked异常</span></span><br><span class="line">List&lt;String&gt; ls = list;	<span class="comment">//引发堆污染警告，如果继续访问则会引发异常</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="2-5、-FunctionalInterface"><a href="#2-5、-FunctionalInterface" class="headerlink" title="2.5、@FunctionalInterface"></a>2.5、<code>@FunctionalInterface</code></h4><p>声明接口为函数式接口，函数式接口只能有一个抽象方法。</p>
-<h2 id="三、元Annotation"><a href="#三、元Annotation" class="headerlink" title="三、元Annotation"></a>三、元<code>Annotation</code></h2><p>JDK除了在Java.lang下提供了5个基本的Annotation之外，还在java.lang.annotation包下提供了6个Meta Annotation，其中5个是用于修饰其他的Annotation定义，其中@Repeatable专门用于定义Java8新增的重复注解。</p>
-<h4 id="3-1、-Retention"><a href="#3-1、-Retention" class="headerlink" title="3.1、@Retention"></a>3.1、@Retention</h4><p>@Retention只能用于修饰Annotation定义，用于指定被修饰的Annotation可以保留多长时间，@Retention包含一个RetentionPolicy类型的value成员变量，所以使用@Retention时必须为该value成员变量指定值 ，有如下三个值：</p>
+<h2 id="三、元Annotation"><a href="#三、元Annotation" class="headerlink" title="三、元Annotation"></a>三、元<code>Annotation</code></h2><p><code>JDK</code>除了在<code>Java.lang下</code>提供了5个基本的<code>Annotation</code>之外，还在<code>java.lang.annotation</code>包下提供了6个Meta<code> Annotation</code>，其中5个是用于修饰其他的<code>Annotation</code>定义，其中<code>@Repeatable</code>专门用于定义Java8新增的重复注解。</p>
+<h4 id="3-1、-Retention"><a href="#3-1、-Retention" class="headerlink" title="3.1、@Retention"></a>3.1、<code>@Retention</code></h4><p><code>@Retention</code>只能用于修饰<code>Annotation</code>定义，用于指定被修饰的Annotation可以保留多长时间，<code>@Retention</code>包含一个<code>RetentionPolicy</code>类型的value成员变量，所以使用@Retention时必须为该value成员变量指定值 ，有如下三个值：</p>
 <ul>
-<li>RetentionPolicy.CLASS:编译器 将把Annotation记录在class文件中，当运行Java运行时，JVM不可获取Annotation信息，这是默认值。</li>
-<li>RetentionPolicy.RUNTIME:编译器将把Annotation记录在class文件中，当运行Java程序时JVM也可获取Annotation信息，程序可以通过反射获取该Annotation信息。</li>
-<li>RetentionPolicy.SOURCE:Annotation只保留在源代码中，编译器直接丢弃这种Annotation。</li>
+<li><code>RetentionPolicy.CLASS</code>:编译器 将把<code>Annotation</code>记录在<code>class</code>文件中，当运行<code>Java</code>运行时，<code>JVM</code>不可获取<code>Annotation</code>信息，这是默认值。</li>
+<li><code>RetentionPolicy.RUNTIME</code>:编译器将把Annotation记录在class文件中，当运行Java程序时JVM也可获取<code>Annotation</code>信息，程序可以通过反射获取该<code>Annotation</code>信息。</li>
+<li><code>RetentionPolicy.SOURCE:Annotation</code>只保留在源代码中，编译器直接丢弃这种<code>Annotation</code>。</li>
 </ul>
-<h4 id="3-2、-Target"><a href="#3-2、-Target" class="headerlink" title="3.2、@Target"></a>3.2、@Target</h4><p>@Target也只能修饰一个Annotation定义，它用于 指定被修饰的Annotation能用于修饰哪些程序单元。</p>
+<h4 id="3-2、-Target"><a href="#3-2、-Target" class="headerlink" title="3.2、@Target"></a>3.2、<code>@Target</code></h4><p><code>@Target</code>也只能修饰一个<code>Annotation</code>定义，它用于 指定被修饰的Annotation能用于修饰哪些程序单元。</p>
 <ul>
-<li>ElementType.ANNOTATION_TYPE:指定该策略的Annotation只能修饰Annotation</li>
-<li>ElementType.CONSTRUCTOR:指定该策略的Annotation只能修饰构造器</li>
-<li>ElementType.FIELD:该策略的Annotation只能修饰成员变量</li>
-<li>ElementType.LOCAL_VARIABLE：Annotation只能修饰布局变量</li>
-<li>ElementType.METHOD:修饰方法</li>
-<li>ElementTYPE.PACKAGE:修改包定义</li>
-<li>ElementTYPE.PARAMETER:指定该策略的Annotation可以修饰参数</li>
-<li>ElementTYPE.TPYE:修饰类</li>
+<li><code>ElementType.ANNOTATION_TYPE</code>:指定该策略的Annotation只能修饰Annotation</li>
+<li><code>ElementType.CONSTRUCTOR</code>:指定该策略的Annotation只能修饰构造器</li>
+<li><code>ElementType.FIELD</code>:该策略的Annotation只能修饰成员变量</li>
+<li><code>ElementType.LOCAL_VARIABLE</code>：Annotation只能修饰布局变量</li>
+<li><code>ElementType.METHOD</code>:修饰方法</li>
+<li><code>ElementTYPE.PACKAGE</code>:修改包定义</li>
+<li><code>ElementTYPE.PARAMETER</code>:指定该策略的Annotation可以修饰参数</li>
+<li><code>ElementTYPE.TPYE</code>:修饰类</li>
 </ul>
-<h4 id="3-3、-Documented"><a href="#3-3、-Documented" class="headerlink" title="3.3、@Documented"></a>3.3、@Documented</h4><p>被@Documented修饰的类将被javadoc工具提取成文档。</p>
-<h4 id="3-4、-Inherited"><a href="#3-4、-Inherited" class="headerlink" title="3.4、@Inherited"></a>3.4、@Inherited</h4><p>@Inherited指定被它修饰的Annotation将具有继承性，如果某个类使用了@Xxx注解修饰(定义该Annotation时使用了Annotation时使用了@Inherited)修饰，则其子类将自动被@Xxx修饰。</p>
-<h4 id="3-5、-Repeatable"><a href="#3-5、-Repeatable" class="headerlink" title="3.5、@Repeatable"></a>3.5、@Repeatable</h4><p>在Java8之前，一个程序元素最多只能使用一个相同类型的Annotation，如果需要在同一个元素前使用多个相同类型的Annotation，则必须使用Annotation容器，如下所示：</p>
+<h4 id="3-3、-Documented"><a href="#3-3、-Documented" class="headerlink" title="3.3、@Documented"></a>3.3、<code>@Documented</code></h4><p>被@Documented修饰的类将被javadoc工具提取成文档。</p>
+<h4 id="3-4、-Inherited"><a href="#3-4、-Inherited" class="headerlink" title="3.4、@Inherited"></a>3.4、<code>@Inherited</code></h4><p><code>@Inherited</code>指定被它修饰的Annotation将具有继承性，如果某个类使用了@Xxx注解修饰(定义该Annotation时使用了Annotation时使用了@Inherited)修饰，则其子类将自动被<code>@Xxx</code>修饰。</p>
+<h4 id="3-5、-Repeatable"><a href="#3-5、-Repeatable" class="headerlink" title="3.5、@Repeatable"></a>3.5、<code>@Repeatable</code></h4><p>在<code>Java8</code>之前，一个程序元素最多只能使用一个相同类型的Annotation，如果需要在同一个元素前使用多个相同类型的Annotation，则必须使用Annotation容器，如下所示：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Results(&#123;@Result(name=&quot;failuer&quot;,location=&quot;failed.jsp&quot;),@Result(name=&quot;source&quot;,location=&quot;succ.jsp&quot;)&#125;)</span></span><br><span class="line"><span class="keyword">public</span> Action FooAction&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>注意如果使用容器注解包含多个相同的注解，则容器注解的@Retention必须大于被包含的注解。</p>
-<p>Java8增加了@Repeatable，使用步骤如下：</p>
+<p><code>Java8</code>增加了<code>@Repeatable</code>，使用步骤如下：</p>
 <p>定义注解容器：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Target(ElementType.TYPE)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span>  FkTags&#123;</span><br><span class="line">    FkTag[] value();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -373,8 +373,13 @@
   
   <nav>
     
+      <a rel="prev" class="post-nav-item mdui-float-left" href="/2021/09/28/Mybatis-plus/">
+        <i class="iconfont icon-angle-left"></i>
+        <span>Mybatis-plus入门到入土系列(一)</span>
+      </a>
     
-      <a rel="next" class="post-nav-item mdui-float-right" href="/2021/09/26/Springboot%E9%9B%86%E6%88%90Swagger2/">
+    
+      <a rel="next" class="post-nav-item mdui-float-right" href="/2021/09/26/Springboot%E9%9B%86%E6%88%90Swagger3/">
         <span>Springboot集成Swagger3</span>
         <i class="iconfont icon-angle-right"></i>
       </a>

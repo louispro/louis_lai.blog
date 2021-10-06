@@ -222,7 +222,7 @@
     </span>
     <span>
       <span class="iconfont icon-calendar-check"></span>
-      更新于:&nbsp;2021-09-24
+      更新于:&nbsp;2021-10-05
     </span>
     <span>
       <span class="iconfont icon-folder"></span>
@@ -286,7 +286,7 @@
 
   
   <div class="mdui-card-content mdui-typo mdui-p-x-4">
-    <p>数据库连接查询分为内连接，外连接，左外连接和右外连接，本文主要介绍左外连接和右外连接以及Group By的使用</p>
+    <p>本文本来只打算介绍mysql连接查询的，但在leetcode刷题和面试的时候发现select语句并不简单，所以又在介绍完连接查询之后详细的介绍了select语句</p>
 
 <div align="center"><img src="http://tva1.sinaimg.cn/large/006gOimwly1guqv6ao7anj60c808ct9t02.jpg">
 
@@ -302,23 +302,45 @@
 
 <p>orders表，包含id和订单号</p>
 <p><img src="https://img-blog.csdnimg.cn/2019050823262860.png" alt="img"></p>
-<h3 id="一、左连接"><a href="#一、左连接" class="headerlink" title="一、左连接"></a>一、左连接</h3><p>左连接返回左表中的所有记录和右表中与连接字段相等的记录</p>
+<h3 id="一、连接"><a href="#一、连接" class="headerlink" title="一、连接"></a>一、连接</h3><h4 id="1-1、左连接"><a href="#1-1、左连接" class="headerlink" title="1.1、左连接"></a>1.1、左连接</h4><p>左连接返回左表中的所有记录和右表中与连接字段相等的记录</p>
 <p>左连接查询示例：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> fruit.id,orders.num</span><br><span class="line"><span class="keyword">from</span> fruit</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> orders</span><br><span class="line"><span class="keyword">on</span> fruit.id <span class="operator">=</span> orders.id</span><br></pre></td></tr></table></figure>
 
 <p>查询结果：</p>
 <img src="http://tva1.sinaimg.cn/large/006gOimwly1guqureb0hjj60bd09njt702.jpg">
 
-<h3 id="二、右连接"><a href="#二、右连接" class="headerlink" title="二、右连接"></a>二、右连接</h3><p>右连接返回右表中的所有记录和左表中与连接字段相对的记录</p>
+<h4 id="1-2、右连接"><a href="#1-2、右连接" class="headerlink" title="1.2、右连接"></a>1.2、右连接</h4><p>右连接返回右表中的所有记录和左表中与连接字段相对的记录</p>
 <p>右连接查询示例：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> fruit.id,orders.num</span><br><span class="line"><span class="keyword">from</span> fruit </span><br><span class="line"><span class="keyword">right</span> <span class="keyword">join</span> orders</span><br><span class="line"><span class="keyword">on</span> fruit.id <span class="operator">=</span> orders.id</span><br></pre></td></tr></table></figure>
 
 <p>查询结果：</p>
 <img src="http://tva1.sinaimg.cn/large/006gOimwly1guquxd8yw9j60bo08nwg402.jpg">
 
-<h3 id="三、group-by"><a href="#三、group-by" class="headerlink" title="三、group by"></a>三、group by</h3><p><code>group by</code>根据by对数据按照哪个字段进行分组，字段相同的就分为同一组</p>
-<p>3.1、单字段分组</p>
-<img src="http://tva1.sinaimg.cn/large/006gOimwly1gursw8kfutj606s02st9502.jpg">
+<h4 id="1-3、等值连接"><a href="#1-3、等值连接" class="headerlink" title="1.3、等值连接"></a>1.3、等值连接</h4><p>等值连接（内连接）返回两个表中联结字段相等的行</p>
+<p>以如下两个表为例：</p>
+<p><img src="/2021/09/23/Mysql%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2/db.png" alt="db"></p>
+<p>内连接：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select a.id,a.patten,b.id,b.pattern from t1 as a,t2 as t2</span><br><span class="line">where a.pattern=b.pattern</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#内连接也可以用inner join或join关键字表示</span><br><span class="line">SELECT a.id,a.pattern,b.id,b.pattern </span><br><span class="line">FROM t1 AS a</span><br><span class="line">INNER JOIN t2 AS b</span><br><span class="line">ON a.pattern = b.pattern;</span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<p>![image-20211005170433624](./Mysql连接查询/inner join.png)</p>
+<h4 id="1-4、全连接"><a href="#1-4、全连接" class="headerlink" title="1.4、全连接"></a>1.4、全连接</h4><p>全连接相当于会保留两个表中所有的数据，不存在则为null</p>
+<p>全连接：mysql并不支持full join，Oracle支持full join，不过我们可以用union实现全连接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">SELECT a.id,a.pattern,b.id,b.pattern</span><br><span class="line">FROM t1 AS a</span><br><span class="line">LEFT JOIN t2 AS b</span><br><span class="line">ON a.pattern = b.pattern</span><br><span class="line">UNION</span><br><span class="line">SELECT a.id,a.pattern,b.id,b.pattern</span><br><span class="line">FROM t1 AS a</span><br><span class="line">RIGHT JOIN t2 AS b</span><br><span class="line">ON a.pattern = b.pattern</span><br></pre></td></tr></table></figure>
+
+<p>1.5、从集合的角度看待左连接，右连接，等值连接和全连接</p>
+<p>左连接：</p>
+<p>![这里写图片描述](./Mysql连接查询/left join-c.jpg)</p>
+<p>右连接：</p>
+<p>![这里写图片描述](./Mysql连接查询/right join-c.jpg)</p>
+<p>等值连接：</p>
+<p>![这里写图片描述](./Mysql连接查询/inner join-c.jpg)</p>
+<p>全连接：</p>
+<p>![这里写图片描述](./Mysql连接查询/full join-c.jpg)</p>
+<h3 id="二、group-by"><a href="#二、group-by" class="headerlink" title="二、group by"></a>二、group by</h3><p><code>group by</code>根据by对数据按照哪个字段进行分组，字段相同的就分为同一组，<code>使用的group by子句的select子句其字段只可以是分组字段和函数字段，其他字段出现将报错</code></p>
+<h4 id="2-1、单字段分组"><a href="#2-1、单字段分组" class="headerlink" title="2.1、单字段分组"></a>2.1、单字段分组</h4><img src="http://tva1.sinaimg.cn/large/006gOimwly1gursw8kfutj606s02st9502.jpg">
 
 <p>示例：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> grade <span class="keyword">from</span> student <span class="keyword">group</span> <span class="keyword">by</span> grade</span><br><span class="line">#分组查询，根据grade字段进行分组，最终结果去除重复的</span><br></pre></td></tr></table></figure>
@@ -326,12 +348,60 @@
 <p>查询结果：</p>
 <img src="http://tva1.sinaimg.cn/large/006gOimwly1gurt01bam1j602801zjr902.jpg">
 
-<p>3.2、多字段分组</p>
-<p>多个字段进行分组 ，需要将多个字段看成整体，多个字段都相等的才看成一组。</p>
+<h4 id="2-2、多字段分组"><a href="#2-2、多字段分组" class="headerlink" title="2.2、多字段分组"></a>2.2、多字段分组</h4><p>多个字段进行分组 ，需要将多个字段看成整体，多个字段都相等的才看成一组。</p>
 <p>示例：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> name,<span class="built_in">sum</span>(salary) <span class="keyword">from</span> student <span class="keyword">group</span> <span class="keyword">by</span> name,grade</span><br><span class="line">#按照名字和分数，名字和分数都相等的才是一组的</span><br></pre></td></tr></table></figure>
 
 <p><code>group by</code> 通常配合聚合函数使用常见的聚合函数有<code>count()</code>,<code>sum()</code>,<code>avg()</code>,<code>max()</code>,<code>min()</code></p>
+<h4 id="2-3、having子句"><a href="#2-3、having子句" class="headerlink" title="2.3、having子句"></a>2.3、having子句</h4><p>having子句通常跟在group by后面，但having不一定非得和group by 一起配合使用，用于对分组后的字段进一步筛选，其通常也是结合聚合函数一起使用。</p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select grade,salary from student group by grade having salary&gt;1500</span><br><span class="line">#根据grade字段分组，然后having筛选出salary&gt;1500的</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="having和where的区别"><a href="#having和where的区别" class="headerlink" title="having和where的区别"></a>having和where的区别</h5><p>where子句只能对真实表中的字段进行筛选，having子句只能筛选或分组得到的字段进行筛选。另外，where子句中是不能使用聚合函数的，而having子句可以。</p>
+<p>假如有这么一张sw_goods表，表中有goods_price,goods_name,goods_number三个字段：</p>
+<ol>
+<li><p>where和having都能使用的场景</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select goods_price,goods_name from sw_goods where goods_price &gt; 100	#where能用是因为表中有goods_price这个字段</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select goods_price,goods_name from sw_goods having goods_price &gt; 100 #having能用是因为筛选得到的字段中有goods_price这个字段</span><br></pre></td></tr></table></figure></li>
+<li><p>只可以用where，不可以用having的场景</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select goods_name,goods_number from sw_goods where goods_price &gt; 100	</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select goods_name,goods_number from sw_goods having goods_price &gt; 100 //报错！！！因为前面并没有筛选出goods_price 字段</span><br></pre></td></tr></table></figure></li>
+<li><p>只可以用having，不可以用where情况</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select goods_category_id , avg(goods_price) as ag from sw_goods group by goods_category having ag &gt; 1000</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select goods_category_id , avg(goods_price) as ag from sw_goods where ag&gt;1000 group by goods_category //报错！！因为from sw_goods 这张数据表里面没有ag这个字段</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+<h2 id="三、完整select语句"><a href="#三、完整select语句" class="headerlink" title="三、完整select语句"></a>三、完整select语句</h2><p>select语句最基本的语法想必大家都知道，<code>select 字段列表 from 数据源</code>，然而select语句可没这么简单，其有着强大的子句可以实现复杂的数据查询功能。</p>
+<p>完整语法如下(上中括号的说明是可选项):</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select 去重选项 字段列表 [as 字段别名]</span><br><span class="line">from 数据源</span><br><span class="line">[where子句]</span><br><span class="line">[group by子句]</span><br><span class="line">[having子句]</span><br><span class="line">[order by子句]</span><br><span class="line">[limit子句]</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<img src="http://tva1.sinaimg.cn/large/006gOimwly1gursw8kfutj606s02st9502.jpg">
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#查询上面这张表</span><br><span class="line">select distinct name as 姓名 grade as 分数</span><br><span class="line">from student</span><br><span class="line">where salary &gt;  1000</span><br><span class="line">group by 姓名</span><br><span class="line">having  分数=A</span><br><span class="line">order by 分数 desc</span><br><span class="line">limit 1,2</span><br></pre></td></tr></table></figure>
+
+<p>下面将对去重选项，order by，limit进行介绍，其他的上面已经介绍过。</p>
+<ul>
+<li><p>去重选项</p>
+<p>all：表示不去重</p>
+<p>distinct：表示去重</p>
+</li>
+<li><p>order by</p>
+<p>order by子句用于对查询到的最终结果进行按字段升降序，默认升序，其有如下几种写法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#单列升降序</span><br><span class="line">select 字段列表 from 表名 order by 字段名 asc/desc</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#多列升降序</span><br><span class="line">select 字段列表 from 表名 order by 字段名1 asc/desc，字段名2 asc/desc</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#多列混合排序</span><br><span class="line">select 字段列表 from 表名 order by 字段名1 asc，字段名2 des</span><br></pre></td></tr></table></figure></li>
+<li><p>limit子句</p>
+<p>limit子句用于限制查询结果的数量的，<code>limit [offset],count</code>，offset表示起始位置，count表示查询的数量，其通常用于做分页查询。</p>
+</li>
+</ul>
 
   </div>
   <!--文末结束语-->
@@ -366,7 +436,7 @@
     <ul class="mdui-menu" id="toc">
       <li class="mdui-menu-item">
         <a href="/2021/09/23/Mysql%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2/" id="toc-header" class="mdui-ripple">文章目录</a>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%B7%A6%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.</span> <span class="toc-text">一、左连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%8F%B3%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.</span> <span class="toc-text">二、右连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81group-by"><span class="toc-number">3.</span> <span class="toc-text">三、group by</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.</span> <span class="toc-text">一、连接</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1%E3%80%81%E5%B7%A6%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.1.</span> <span class="toc-text">1.1、左连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2%E3%80%81%E5%8F%B3%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.2.</span> <span class="toc-text">1.2、右连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3%E3%80%81%E7%AD%89%E5%80%BC%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.3.</span> <span class="toc-text">1.3、等值连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4%E3%80%81%E5%85%A8%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.4.</span> <span class="toc-text">1.4、全连接</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81group-by"><span class="toc-number">2.</span> <span class="toc-text">二、group by</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1%E3%80%81%E5%8D%95%E5%AD%97%E6%AE%B5%E5%88%86%E7%BB%84"><span class="toc-number">2.1.</span> <span class="toc-text">2.1、单字段分组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2%E3%80%81%E5%A4%9A%E5%AD%97%E6%AE%B5%E5%88%86%E7%BB%84"><span class="toc-number">2.2.</span> <span class="toc-text">2.2、多字段分组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3%E3%80%81having%E5%AD%90%E5%8F%A5"><span class="toc-number">2.3.</span> <span class="toc-text">2.3、having子句</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#having%E5%92%8Cwhere%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.3.1.</span> <span class="toc-text">having和where的区别</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AE%8C%E6%95%B4select%E8%AF%AD%E5%8F%A5"><span class="toc-number"></span> <span class="toc-text">三、完整select语句</span></a>
       </li>
     </ul>
   </div>
