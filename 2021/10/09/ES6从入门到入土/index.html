@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <script>if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode)) window.location.href="https://support.dmeng.net/upgrade-your-browser.html?referrer="+encodeURIComponent(window.location.href); </script>
+    
+    
+        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Regular.woff2" as="font">
+        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Bold.woff2" as="font">
+    
+    
+    
+        <link rel="shortcut icon" href="/icons/favicon.ico">
+    
+
+    
+    
+        
+<link rel="stylesheet" href="/css/mdui.min.v1.0.0.css">
+
+    
+    
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/iconfont.css">
+
+
+    
+    
+
+    
+        <script data-ad-client="ca-" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+          
+
+
+    
+    
+    <title>
+        
+            ES6从入门到入土 | Louis
+        
+    </title>
+    
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-teal mdui-theme-accent-blue">
+  
+  <header class="mdui-appbar mdui-appbar-fixed">
+  <div id="toolbar" class="mdui-toolbar mdui-color-theme">
+    <button class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="iconfont icon-menu"></i></button>
+    <a href="/" class="mdui-typo-headline">Louis</a>
+    <a href="/" class="header-subtitle mdui-typo-headline">天天向上</a>
+    <div class="mdui-toolbar-spacer"></div>
+    <button class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: 'search'}"><i class="iconfont icon-search"></i></button>
+  </div>
+</header>
+
+<div class="mdui-dialog" id="search">
+  
+    <div class="search-form">
+      <input type="search" class="search-form-input" placeholder="请输入关键字" onfocus="listenSearchFunc()">
+    </div>
+    <div class="search-result" data-resource="/search.xml"></div>
+  
+</div>
+
+  <aside id="sidebar" class="mdui-drawer">
+    <div class="mdui-tab" mdui-tab>
+        <a href="#sidebar-tab1" id="sidebartab" class="mdui-ripple mdui-tab-active">站点概览</a>
+        <a href="#sidebar-tab2" id="sidebartab" class="mdui-ripple">关于</a>
+    </div>
+
+    
+    <div id="sidebar-tab1" class="mdui-p-a-1">
+        <div class="mdui-list">
+            
+                
+                <a href="/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-home"></i>
+                    </div>
+                    <div class="mdui-list-item-content">主页</div>
+                </a>
+            
+                
+                <a href="/tags/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-bookmark"></i>
+                    </div>
+                    <div class="mdui-list-item-content">标签</div>
+                </a>
+            
+                
+                <a href="/categories/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-folder"></i>
+                    </div>
+                    <div class="mdui-list-item-content">分类</div>
+                </a>
+            
+                
+                <a href="/archives/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-archive"></i>
+                    </div>
+                    <div class="mdui-list-item-content">归档</div>
+                </a>
+            
+                
+                <a href="/tools/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-tools"></i>
+                    </div>
+                    <div class="mdui-list-item-content">工具箱</div>
+                </a>
+            
+                
+                <a href="/about/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-user"></i>
+                    </div>
+                    <div class="mdui-list-item-content">关于</div>
+                </a>
+            
+            <div class="mdui-list-item mdui-ripple">
+                <div class="mdui-list-item-icon">
+                    <i class="iconfont icon-moon"></i>
+                </div>
+                <div class="mdui-list-item-content">夜间模式</div>
+                <label class="mdui-switch" id="darkmode">
+                  <input type="checkbox" id="nightmode_switch"/>
+                  <i class="mdui-switch-icon"></i>
+                </label>
+            </div>           
+        </div>
+    </div>
+
+    
+    <div id="sidebar-tab2" class="mdui-p-a-1">
+        <div class="sidebar-overview">
+            <div class="sidebar-avatar">
+                
+                    <img src="/icons/avatar.gif"/>
+                
+            </div>
+            <div class="sidebar-author-name">Louis</div>
+            <div class="sidebar-description">A blog base on hexo,themes copy from https://github.com/kb1000fx/hexo-theme-meadow,thanks</div>
+        </div>
+        <div class="sidebar-links">
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-mail"></i></span>
+                    <a href="mailto:1598358615@qq.com" class="mdui-chip-title">E-Mail</a>
+                </div>
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-github"></i></span>
+                    <a target="_blank" rel="noopener" href="https://github.com/louispro" class="mdui-chip-title">GitHub</a>
+                </div>
+            
+        </div>
+        <ul class="mdui-list" mdui-collapse="{accordion: true}">
+            <li class="mdui-collapse-item">
+                <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-link"></i>
+                    </div>
+                    <div class="mdui-list-item-content">友情链接</div>
+                    <div class="mdui-collapse-item-arrow">
+                        <i class="mdui-list-item-icon iconfont icon-angle-down"></i>
+                    </div>
+                </div>
+                <ul id="linksList" class="mdui-collapse-item-body mdui-list mdui-list-dense">
+                    
+                        <a target="_blank" rel="noopener" href="https://garybear.cn/hexo-theme-meadow/" class="mdui-list-item mdui-ripple">
+                            Meadow说明文档
+                        </a>
+                    
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mdui-divider"></div>
+    
+    
+</aside>
+  
+  <main id="main-contain" class="mdui-container mdui-m-t-5">
+    <article id="article" class="mdui-card mdui-p-b-2 mdui-m-b-5">
+  <header class="mdui-card-media">
+    
+    
+      <div class="post-header"> 
+  <a class="post-header-title" href="/2021/10/09/ES6%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/">ES6从入门到入土</a>
+  <div class="post-header-meta">
+    <span>
+      <span class="iconfont icon-calendar"></span>
+      发布于:&nbsp;2021-10-09
+    </span>
+    <span>
+      <span class="iconfont icon-calendar-check"></span>
+      更新于:&nbsp;2021-10-10
+    </span>
+    <span>
+      <span class="iconfont icon-folder"></span>
+      分类于:&nbsp;<a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a> > <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/ES6/">ES6</a>
+    </span>
+    
+      <span>
+        <span class="iconfont icon-eye"></span>
+        阅读次数:&nbsp;
+        <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
+      </span>
+    
+  </div>
+</div>   
+    
+
+
+
+    
+    
+    <div class="mdui-card-menu">
+    
+      <button class="mdui-btn mdui-btn-icon mdui-text-color-teal" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="iconfont icon-share"></i></button>
+      <ul class="mdui-menu" id="share_menu">
+        <li class="mdui-menu-item">
+          <a href="http://service.weibo.com/share/share.php?appkey=&title=ES6从入门到入土&url=http://example.com/2021/10/09/ES6%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/&pic=http://example.com/null&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://twitter.com/intent/tweet?text=ES6从入门到入土&url=http://example.com/2021/10/09/ES6%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/&via=Louis" target="_blank" class="mdui-ripple">分享到 Twitter</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=http://example.com/2021/10/09/ES6%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://plus.google.com/share?url=http://example.com/2021/10/09/ES6%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/" target="_blank" class="mdui-ripple">分享到 Google+</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://example.com/2021/10/09/ES6%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/&title=ES6从入门到入土" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="http://connect.qq.com/widget/shareqq/index.html?site=Louis&title=ES6从入门到入土&summary=A blog base on hexo,themes copy from https://github.com/kb1000fx/hexo-theme-meadow,thanks&pics=http://example.com/null&url=http://example.com/2021/10/09/ES6%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/" target="_blank" class="mdui-ripple">分享到 QQ</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://telegram.me/share/url?url=http://example.com/2021/10/09/ES6%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/&text=ES6从入门到入土" target="_blank" class="mdui-ripple">分享到 Telegram</a>
+        </li>
+      </ul>
+    
+  </div>
+  </header>
+  
+  
+  
+  
+  <div class="post-tags">
+    
+      <i class="iconfont icon-tag">
+        <a rel="tag" href = /tags/%E5%89%8D%E7%AB%AF/ >前端</a>
+      </i>
+    
+  </div>
+
+  
+  <div class="mdui-card-content mdui-typo mdui-p-x-4">
+    <br>
+
+<div align="center">
+
+<p><img src="/2021/10/09/ES6%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/es6.png" alt="es6"></p>
+</div>
+
+<span id="more"></span>
+
+<p>const对于数组和对象的元素修改，不能算作对常量的修改，不会报错。</p>
+<h2 id="一、ES6基础语法"><a href="#一、ES6基础语法" class="headerlink" title="一、ES6基础语法"></a>一、ES6基础语法</h2><h4 id="1-2、变量的解构赋值"><a href="#1-2、变量的解构赋值" class="headerlink" title="1.2、变量的解构赋值"></a>1.2、变量的解构赋值</h4><p>ES6允许按照一定模式从数组和对象中提取值，对变量进行赋值，这被称为解构赋值</p>
+<h5 id="1-2-1、数组的解构"><a href="#1-2-1、数组的解构" class="headerlink" title="1.2.1、数组的解构"></a>1.2.1、数组的解构</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> f4 = [<span class="string">&#x27;小沈阳&#x27;</span>,<span class="string">&#x27;刘能&#x27;</span>,<span class="string">&#x27;赵四&#x27;</span>,<span class="string">&#x27;宋小宝&#x27;</span>]</span><br><span class="line"><span class="keyword">let</span> [xiao,liu,zhao,song] = f4</span><br><span class="line"><span class="built_in">console</span>.log(xiao) <span class="comment">//小沈阳</span></span><br><span class="line"><span class="built_in">console</span>.log(liu)	<span class="comment">//刘能</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="1-2-2、对象的解构"><a href="#1-2-2、对象的解构" class="headerlink" title="1.2.2、对象的解构"></a>1.2.2、对象的解构</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对象的解构</span></span><br><span class="line"><span class="keyword">const</span> zhao = &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&#x27;赵本山&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>:<span class="string">&#x27;不详&#x27;</span>，</span><br><span class="line">    <span class="attr">xiaopin</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;我可以演小品&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123;name,age,xiaopin&#125; = zhao;</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-3、模板字符串"><a href="#1-3、模板字符串" class="headerlink" title="1.3、模板字符串"></a>1.3、模板字符串</h4><p>ES6引入了新的声明字符串的方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//声明 </span></span><br><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;我是字符串&quot;</span>;  </span><br><span class="line"><span class="comment">//内容中可以直接出现换行符</span></span><br><span class="line"><span class="keyword">let</span> str1 = <span class="string">`&lt;ul&gt;</span></span><br><span class="line"><span class="string">				&lt;li&gt;沈腾&lt;/li&gt;</span></span><br><span class="line"><span class="string">				&lt;li&gt;马丽&lt;/li&gt;</span></span><br><span class="line"><span class="string">				&lt;li&gt;艾伦&lt;/li&gt;</span></span><br><span class="line"><span class="string">			&lt;/ul&gt;`</span></span><br><span class="line"><span class="comment">//变量拼接</span></span><br><span class="line"><span class="keyword">let</span> lovest = <span class="string">&#x27;桃乃木香奈&#x27;</span></span><br><span class="line"><span class="keyword">let</span> out = <span class="string">&#x27;$&#123;lovest&#125;是我最喜欢的爱情动作片演员&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-4、对象的简化写法"><a href="#1-4、对象的简化写法" class="headerlink" title="1.4、对象的简化写法"></a>1.4、对象的简化写法</h4><p>ES6允许在大括号里面直接写入变量和函数，作为对象的属性和方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="string">&#x27;louis&#x27;</span></span><br><span class="line"><span class="keyword">let</span> fun = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> school = &#123;</span><br><span class="line">    name,</span><br><span class="line">    fun,</span><br><span class="line">    <span class="attr">fun1</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(name)</span><br><span class="line">    &#125;,	<span class="comment">//js中声明方法</span></span><br><span class="line">    <span class="function"><span class="title">fun2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log</span><br><span class="line">    &#125;	<span class="comment">//es6中声明方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-5、箭头函数以及声明特点"><a href="#1-5、箭头函数以及声明特点" class="headerlink" title="1.5、箭头函数以及声明特点"></a>1.5、箭头函数以及声明特点</h4><p>ES6允许使用箭头<code>=&gt;</code>定义函数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//js声明一个函数</span></span><br><span class="line"><span class="keyword">let</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//es6箭头声明函数</span></span><br><span class="line"><span class="keyword">let</span> fn2 = <span class="function">(<span class="params">a,b</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//箭头函数特点</span></span><br><span class="line"><span class="comment">//1.this是静态的，this始终指向函数声明时所在作用域下的this值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> getName2=<span class="function">()=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//设置window对象的name属性</span></span><br><span class="line"><span class="built_in">window</span>.name=<span class="string">&#x27;louis&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> school = &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&quot;satomi&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//直接调用</span></span><br><span class="line">getname()	<span class="comment">//输出louis</span></span><br><span class="line">getname2()	<span class="comment">//输出louis</span></span><br><span class="line"><span class="comment">//间接调用</span></span><br><span class="line">getName.call(school);	<span class="comment">//输出satomi</span></span><br><span class="line">getName2.call(school);	<span class="comment">//输出louis</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//2.不能做为构造函数实例化对象</span></span><br><span class="line"><span class="keyword">let</span> Person = <span class="function">(<span class="params">name,age</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age</span><br><span class="line">&#125;	<span class="comment">//将报错</span></span><br><span class="line"><span class="comment">//3.不能使用arguments变量</span></span><br><span class="line"><span class="comment">//4.箭头函数的简写</span></span><br><span class="line"><span class="comment">//当形参有且只有一个的时候可以省略</span></span><br><span class="line"><span class="keyword">let</span> add = <span class="function"><span class="params">n</span> =&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> n+n;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//当代码体只有一条语句的时候可以省略花括号&#123;&#125;</span></span><br><span class="line"><span class="keyword">let</span> square = <span class="function"><span class="params">n</span> =&gt;</span> n*n;</span><br><span class="line"></span><br><span class="line"><span class="comment">//箭头函数适合与this无关的回调，定时器，数组的方法回调</span></span><br><span class="line"><span class="comment">//箭头函数不适合与this有关的回调，事件回调，对象的方法</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-6、函数参数默认值设置"><a href="#1-6、函数参数默认值设置" class="headerlink" title="1.6、函数参数默认值设置"></a>1.6、函数参数默认值设置</h4><p>ES6允许给函数赋值初始值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//具有默认值的参数的位置一般靠后</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a,b,c=<span class="number">10</span></span>)</span>&#123;	<span class="comment">//不传参的话，c的默认值为10</span></span><br><span class="line">    <span class="keyword">return</span> a+b+c;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//与解构赋值结合</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">connect</span>(<span class="params">&#123;host=<span class="string">&#x27;1.1.1.1&#x27;</span>,username,password,port&#125;</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(host);</span><br><span class="line">    <span class="built_in">console</span>.log(username);</span><br><span class="line">    <span class="built_in">console</span>.log(password);</span><br><span class="line">    <span class="built_in">console</span>.log(port);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">connect(&#123;</span><br><span class="line">    <span class="attr">host</span>:<span class="string">&#x27;localhost&#x27;</span>,</span><br><span class="line">    <span class="attr">username</span>:<span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">    <span class="attr">password</span>:<span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">    <span class="attr">port</span>:<span class="string">&#x27;123456&#x27;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-7、rest参数"><a href="#1-7、rest参数" class="headerlink" title="1.7、rest参数"></a>1.7、rest参数</h4><p>ES6引入rest参数，用于获取函数的实参，用来代替arguments</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ES5获取实参的方式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">date</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);</span><br><span class="line">&#125;i</span><br><span class="line">date(<span class="string">&#x27;satomi&#x27;</span>,<span class="string">&#x27;sakura&#x27;</span>,<span class="string">&#x27;桃乃木香奈&#x27;</span>);</span><br><span class="line"><span class="comment">//ES6用rest获取实参,rest参数必须要放到最后</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">date</span>(<span class="params">...args</span>)</span>&#123;	</span><br><span class="line">    <span class="built_in">console</span>.log(args);	<span class="comment">//rest参数实际上是一个数组</span></span><br><span class="line">&#125;</span><br><span class="line">date(<span class="string">&#x27;satomi&#x27;</span>,<span class="string">&#x27;sakura&#x27;</span>,<span class="string">&#x27;桃乃木香奈&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-8、扩展运算符"><a href="#1-8、扩展运算符" class="headerlink" title="1.8、扩展运算符"></a>1.8、扩展运算符</h4><p>扩展运算符能将数组转换为逗号分隔的参数序列</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> tfboys = [<span class="string">&#x27;易烊千玺&#x27;</span>,<span class="string">&#x27;王源&#x27;</span>,<span class="string">&#x27;王俊凯&#x27;</span>]</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">chunwan</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);</span><br><span class="line">&#125;</span><br><span class="line">chunwan(...tfboys);	<span class="comment">//这个相当于chunwan(&#x27;易烊千玺&#x27;,&#x27;王源&#x27;,&#x27;王俊凯&#x27;)</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>应用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数组的合并</span></span><br><span class="line"><span class="keyword">const</span> kuaizi = [<span class="string">&#x27;王太利&#x27;</span>,<span class="string">&#x27;肖央&#x27;</span>];</span><br><span class="line"><span class="keyword">const</span> fenghuang = [<span class="string">&#x27;曾毅&#x27;</span>,<span class="string">&#x27;玲花&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> bestApple = [...kuaizi,...fenghuang];</span><br><span class="line"></span><br><span class="line"><span class="comment">//数组的克隆</span></span><br><span class="line"><span class="keyword">const</span> flower= [<span class="string">&#x27;e&#x27;</span>,<span class="string">&#x27;g&#x27;</span>,<span class="string">&#x27;m&#x27;</span>];</span><br><span class="line"><span class="keyword">const</span> glass = [...flower];</span><br><span class="line"></span><br><span class="line"><span class="comment">//将伪数组转换为真数组</span></span><br><span class="line"><span class="keyword">const</span> div = <span class="built_in">document</span>.querySelectAll(<span class="string">&quot;div&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> divs = [...div];</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-6、Symbol基本使用"><a href="#1-6、Symbol基本使用" class="headerlink" title="1.6、Symbol基本使用"></a>1.6、Symbol基本使用</h4><p>ES6引入了一种新的原始数据类型Symbol，表示独一无二的值。它是JavaScript语言的第七种数据类型，是一种类似于字符串的数据类型。</p>
+<p>Symbol特点：</p>
+<ol>
+<li>Symbol的值是唯一的，用来解决命名冲突的问题</li>
+<li>Symbol值不能与其他数据进行运算</li>
+<li>Symbol定义的对象属性不能使用for…in循环遍历，但是可以使用Reflect.ownKeys来获取对象的所有键名。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建symbol</span></span><br><span class="line"><span class="keyword">let</span> s = <span class="built_in">Symbol</span>();</span><br><span class="line"><span class="built_in">console</span>.log(s,<span class="keyword">typeof</span> s);	<span class="comment">//Symbol(),&quot;symbol&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> s2 = <span class="built_in">Symbol</span>(<span class="string">&quot;louis&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> s3 = <span class="built_in">Symbol</span>(<span class="string">&quot;louis&quot;</span>);	</span><br><span class="line"><span class="built_in">console</span>.log(s2===s3);	<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Symbol.for创建symbol</span></span><br><span class="line"><span class="keyword">let</span> s4 = <span class="built_in">Symbol</span>.for(<span class="string">&quot;louis&quot;</span>)</span><br><span class="line"><span class="keyword">let</span> s5 = <span class="built_in">Symbol</span>.for(<span class="string">&quot;louis&quot;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(s4===s5)	<span class="comment">//true </span></span><br></pre></td></tr></table></figure>
+
+<p>js七种数据类型</p>
+<p><code>undefined</code>,<code>string</code>,<code>symbol</code>,<code>object</code>,<code>null</code>,<code>number</code>,<code>boolean</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> game = &#123;</span><br><span class="line">    <span class="attr">up</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;up&quot;</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">down</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;down&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> methods  = &#123;</span><br><span class="line">    <span class="attr">up</span>:symbol(),</span><br><span class="line">    <span class="attr">down</span>:symbol()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//向game中添加属性</span></span><br><span class="line">game[methods.up] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;我很棒&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line">game[methods.down] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;你好坏&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> youxi = &#123;</span><br><span class="line">    name=<span class="string">&quot;狼人杀&quot;</span>,</span><br><span class="line">    [<span class="built_in">Symbol</span>(<span class="string">&#x27;say&#x27;</span>)]:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;我很菜&quot;</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    [<span class="built_in">Symbol</span>(<span class="string">&quot;zibao&quot;</span>):<span class="function"><span class="title">funciton</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;你好好&quot;</span>)</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-7、迭代器"><a href="#1-7、迭代器" class="headerlink" title="1.7、迭代器"></a>1.7、迭代器</h4><p>迭代器是一种接口，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署Iterator接口，就可以完成遍历操作。</p>
+<ol>
+<li>ES6创造了一种的新的遍历命令for…of循环，iterator接口主要供for…of消费</li>
+<li>原生具备iterator接口的数据(可用for of遍历)<ul>
+<li>Array</li>
+<li>Arguments</li>
+<li>Set</li>
+<li>Map</li>
+<li>String</li>
+<li>TypedArray</li>
+<li>NodeList</li>
+</ul>
+</li>
+<li>工作原理<ul>
+<li>创建一个指针对象，指向当前数据结构的起始位置</li>
+<li>第一次调用的next方法，指针自动指向数据结构的第一个成员</li>
+<li>接下来不断调用next方法，指针一直往后移动，直到指向最后一个成员</li>
+<li>每调用next方法返回一个包含value和done属性的对象</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//声明一个数组</span></span><br><span class="line"><span class="keyword">const</span> xiyou = [<span class="string">&#x27;唐僧&#x27;</span>,<span class="string">&#x27;孙悟空&#x27;</span>,<span class="string">&#x27;猪八戒&#x27;</span>,<span class="string">&#x27;沙僧&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> v <span class="keyword">of</span> xiyou)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(v);	<span class="comment">//唐僧，孙悟空，猪八戒，沙僧</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> iterator = xiyou[<span class="built_in">Symbol</span>.iterator]();</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用对象的next方法</span></span><br><span class="line"><span class="built_in">console</span>.log(iterator.next());</span><br><span class="line"><span class="built_in">console</span>.log(iterator.next());</span><br><span class="line"><span class="built_in">console</span>.log(iterator.next());</span><br></pre></td></tr></table></figure>
+
+<p>迭代器自定义遍历对象：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ideapocket = &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&quot;ip社&quot;</span>,</span><br><span class="line">    <span class="attr">girls</span>:[</span><br><span class="line">        <span class="string">&#x27;桃乃木香奈&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;枫花恋&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;樱空桃&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;相泽南&#x27;</span></span><br><span class="line">    ],</span><br><span class="line">    [<span class="built_in">Symbol</span>.iterator]()&#123;</span><br><span class="line">        <span class="keyword">let</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">let</span> _this = <span class="built_in">this</span>;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="attr">next</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(index&lt;_this.girls.length)&#123;</span><br><span class="line">                    <span class="keyword">const</span> result = &#123;<span class="attr">value</span>:_this.girls[index],<span class="attr">done</span>:<span class="literal">false</span>&#125;;</span><br><span class="line">                    index++;</span><br><span class="line">                    <span class="keyword">return</span> result;</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span> &#123;<span class="attr">value</span>:<span class="literal">undefined</span>,<span class="attr">done</span>:<span class="literal">true</span>&#125;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//遍历对象</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> girl <span class="keyword">of</span> ideapocket)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(girl);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-8、生成器"><a href="#1-8、生成器" class="headerlink" title="1.8、生成器"></a>1.8、生成器</h4><p>生成器函数是ES6提供的一个异步编程解决方案，语法行为与传统函数完全不同。</p>
+<h4 id="1-9、Promise"><a href="#1-9、Promise" class="headerlink" title="1.9、Promise"></a>1.9、Promise</h4><p>Promise是ES6引入的异步编程的新解决方案。语法上Promise是一个构造函数，用来封装异步操作并可以获取其成功或失败的结果。</p>
+<ol>
+<li>Promise构造函数：Promise(excutor){}</li>
+<li>Promise.prototype.then方法</li>
+<li>Promise.prototype.catch方法</li>
+</ol>
+<p>废话不多说，直接上代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>)</span>&#123;  <span class="comment">//创建的promise对象有三个状态，初始化，成功和失败</span></span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> data = <span class="string">&quot;数据库中的用户数据&quot;</span>;</span><br><span class="line">    resolve(data);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">p.then(<span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123; <span class="comment">//其构造函数调用resolve则调用这个方法</span></span><br><span class="line">  <span class="built_in">console</span>.log(value)</span><br><span class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">reson</span>)</span>&#123;  <span class="comment">//其构造函数调用reject则调用这个方法</span></span><br><span class="line">  <span class="built_in">console</span>.log(reason);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>promise读取文件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</span><br><span class="line">    fs.readFile(<span class="string">&quot;file.txt&quot;</span>,<span class="function">(<span class="params">err,data</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="comment">//如果失败</span></span><br><span class="line">        <span class="keyword">if</span>(err) reject(err);</span><br><span class="line">        resolve(data);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">p.then(<span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(value.toString());</span><br><span class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">reason</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;读取失败&quot;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>promise封装ajax请求：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//promise封装ajax</span></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">  xhr.open(<span class="string">&quot;GET&quot;</span>,<span class="string">&quot;http://localhost:8080/vuebefore/ajax?action=promise&quot;</span>);</span><br><span class="line">  xhr.send();</span><br><span class="line">  xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(xhr.readyState === <span class="number">4</span>)&#123;</span><br><span class="line">      <span class="keyword">if</span>(xhr.status&gt;<span class="number">200</span> &amp;&amp; xhr.status&lt;<span class="number">300</span>)&#123;</span><br><span class="line">        resolve(xhr.response);</span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        reject(xhr.status);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line">p1.then(<span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">reason</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(reason);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>promise的then方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//then方法返回的值依然是promise对象，但其状态由返回值决定，如果返回的Promise对象，则对象的状态由此Promise对象回调函数的执行结果决定</span></span><br><span class="line"><span class="comment">//如果返回的是非promise类型的属性，状态为成功，返回值为对象的</span></span><br><span class="line"><span class="keyword">const</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</span><br><span class="line">    resolve(<span class="string">&quot;data&quot;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">const</span> result = p.then(<span class="function"><span class="params">value</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(value);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;satomi&quot;</span>;	<span class="comment">//返回的promise状态为成功</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="comment">//resolve(&quot;ok&quot;);</span></span><br><span class="line">        reject(<span class="string">&quot;error&quot;</span>);	<span class="comment">//返回promise状态为失败</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;出错啦&quot;</span>);	<span class="comment">//抛出异常则promise状态为失败</span></span><br><span class="line">&#125;,<span class="function"><span class="params">reason</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.warn(reason);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>因为promise的then方法返回Promise对象d的状态由代码中return后面的Promise对象的状态决定，所以Promise可以链式调用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</span><br><span class="line">    resolve(<span class="string">&quot;data&quot;</span>);</span><br><span class="line">&#125;)</span><br><span class="line">p.then(<span class="function"><span class="params">value</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;,<span class="function"><span class="params">reason</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(reason);</span><br><span class="line">&#125;).then(<span class="function"><span class="params">value</span>=&gt;</span>&#123;	<span class="comment">//链式调用</span></span><br><span class="line">    <span class="built_in">console</span>.warn(value);</span><br><span class="line">&#125;,<span class="function"><span class="params">reason</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.warn(reason);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>promise读取多个文件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    fs.readFile(<span class="string">&quot;file1.txt&quot;</span>,<span class="function">(<span class="params">err,data</span>)=&gt;</span>&#123;</span><br><span class="line">        resolve(data);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//链式调用读取多个文件</span></span><br><span class="line">p.then(<span class="function"><span class="params">value</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</span><br><span class="line">        fs.readFile(<span class="string">&quot;file2.txt&quot;</span>,<span class="function">(<span class="params">err,data</span>)=&gt;</span>&#123;</span><br><span class="line">            resolve([value,data]);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;,<span class="function"><span class="params">reason</span>=&gt;</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;).then(<span class="function"><span class="params">value</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</span><br><span class="line">        fs.readFile(<span class="string">&quot;file3.txt&quot;</span>,<span class="function">(<span class="params">err,data</span>)=&gt;</span>&#123;</span><br><span class="line">            value.push(data);</span><br><span class="line">            resolve(value);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;,<span class="function"><span class="params">reason</span>=&gt;</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;).then(<span class="function"><span class="params">value</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(value.join(<span class="string">&quot;\r\n&quot;</span>));</span><br><span class="line">&#125;,<span class="function"><span class="params">reason</span>=&gt;</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>1.10、Set集合</p>
+<p>ES6提供了新的数据结构Set（集合）。它类似于数组，但成员的值都是唯一的，集合实现了iterator接口，所以可以使用扩展运算符和for…of进行遍历，集合的属性和方法：</p>
+<ol>
+<li>size 返回集合的元素个数</li>
+<li>add 增加一个新元素，返回当前集合</li>
+<li>delete 删除元素</li>
+<li>has 检测集合中是否包含某个元素，返回boolean值</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s2 = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="string">&#x27;satomi&#x27;</span>,<span class="string">&#x27;sakura&#x27;</span>,<span class="string">&#x27;promise&#x27;</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(s2);    <span class="comment">//&#123;&#x27;satomi&#x27;, &#x27;sakura&#x27;, &#x27;promise&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>集合应用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>];</span><br><span class="line"><span class="comment">//1.数组去重</span></span><br><span class="line"><span class="keyword">let</span> result = [...new <span class="built_in">Set</span>(arr)];</span><br><span class="line"><span class="comment">//求交集</span></span><br><span class="line"><span class="keyword">let</span> arr2 = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">6</span>];</span><br><span class="line"><span class="keyword">let</span> result = [...new <span class="built_in">Set</span>(arr)].filter(<span class="function"><span class="params">item</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> s2 = <span class="keyword">new</span> <span class="built_in">Set</span>(arr2);	<span class="comment">//4,5,6</span></span><br><span class="line">    <span class="keyword">if</span>(s2.has(item))&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//并集</span></span><br><span class="line"><span class="keyword">let</span> union = [...new <span class="built_in">Set</span>(...arr,...arr2)];</span><br></pre></td></tr></table></figure>
+
+<p>1.11、Map</p>
+<p>ES6提供了Map数据结构。它类似于对象，也是键值对的集合。但是”键”的范围不限于字符串，各种类型的值都可以当作键。Map也实现了iterator接口，所以可以使用扩展运算符和for…of进行遍历。Map的属性和方法：</p>
+<ol>
+<li>size 返回Map的元素个数</li>
+<li>set 新增一个新元素，返回当前Map</li>
+<li>get返回键名对象的键值</li>
+<li>has检测map是否包含某个元素，返回boolean值</li>
+<li>clear 清空集合，返回undefined</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、ES6高级语法"><a href="#二、ES6高级语法" class="headerlink" title="二、ES6高级语法"></a>二、ES6高级语法</h2><p>2.1、class类</p>
+<p>ES6提供了更接近传统语言的写法，引入了class这个概念，作为对象的模板。通过class关键字，可以定义类。基本上，ES6的class可以看作只是一个语法糖，它的绝大部分功能，ES5都可以做到，新的class写法只是让对象原型的写法更加清晰，更像面向对象程序的语法而已。</p>
+<p>ES5实现类</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Phone</span>(<span class="params">brand,price</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.brand = brand;</span><br><span class="line">    <span class="built_in">this</span>.price = price;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//添加方法</span></span><br><span class="line">Phone.prototype.call = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;您拨的电话正在通话中&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//实例化对象</span></span><br><span class="line"><span class="keyword">let</span> xioami = <span class="keyword">new</span> Phone(<span class="string">&quot;xiaomi&quot;</span>,<span class="number">1500</span>);</span><br><span class="line">xiaomi.call();</span><br></pre></td></tr></table></figure>
+
+<p>ES6实现类：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Phone</span></span>&#123;</span><br><span class="line">    <span class="comment">//构造方法，名字不能修改</span></span><br><span class="line">    <span class="function"><span class="title">consrtuctor</span>(<span class="params">brand,price</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.brand = brand;</span><br><span class="line">        <span class="built_in">this</span>.price = price;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//方法必须使用该语法，不能使用ES5的对象完整形式</span></span><br><span class="line">    <span class="function"><span class="title">call</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;您拨打的电话正在通话中&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> xiaomi = <span class="keyword">new</span> Phone(<span class="string">&quot;xiaomi&quot;</span>,<span class="number">1599</span>);</span><br></pre></td></tr></table></figure>
+
+<p>静态成员：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Phone</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> name = <span class="string">&quot;手机&quot;</span>;	<span class="comment">//静态成员变量和方法</span></span><br><span class="line">	<span class="keyword">static</span> <span class="function"><span class="title">change</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;手机&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>构造函数继承：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Phone</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">brand,price</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.brand = brand;</span><br><span class="line">        <span class="built_in">this</span>.price = price;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="title">call</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;手机&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//子类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AIPhone</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">brand,price,color,size</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(brand,price);</span><br><span class="line">        <span class="built_in">this</span>.color = color;</span><br><span class="line">        <span class="built_in">this</span>.size = size;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//相当于java中的get</span></span><br><span class="line">    <span class="keyword">get</span> <span class="title">price</span>()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;价格属性被读取了&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;haha&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//相当于java中的set</span></span><br><span class="line">    <span class="keyword">set</span> <span class="title">price</span>(<span class="params">newVal</span>)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;价格属性被修改了&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="title">photo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;美艳&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="title">playGame</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;王者荣耀&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//重写父类方法</span></span><br><span class="line">    <span class="function"><span class="title">call</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;智能手机&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> xiaomi = <span class="keyword">new</span> AIPhone(<span class="string">&quot;xiaomi&quot;</span>,<span class="string">&quot;1588&quot;</span>,<span class="string">&quot;red&quot;</span>,<span class="string">&quot;mid&quot;</span>);</span><br><span class="line">xiaomi.photo();</span><br><span class="line"><span class="built_in">console</span>.log(xiaomi.price);	<span class="comment">//将调用get price()f</span></span><br><span class="line">xiaomi.price = <span class="string">&quot;888&quot;</span>;	<span class="comment">//将调用set price()方法</span></span><br></pre></td></tr></table></figure>
+
+
+  </div>
+  <!--文末结束语-->
+  
+    <div style="text-align:center;color: #ccc;font-size:24px;"> --- 本文结束 <i class="iconfont icon-heartbeat" style="font-size:24px;"></i> The End --- </div>
+  
+  <!--页脚广告-->
+  
+  <div class="mdui-divider"></div>
+  
+  <nav>
+    
+      <a rel="prev" class="post-nav-item mdui-float-left" href="/2021/10/10/vue%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F%EF%BC%88%E4%B8%80%EF%BC%89/">
+        <i class="iconfont icon-angle-left"></i>
+        <span>vue入门到入土（一）</span>
+      </a>
+    
+    
+      <a rel="next" class="post-nav-item mdui-float-right" href="/2021/10/06/Ajax%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+        <span>Ajax学习笔记</span>
+        <i class="iconfont icon-angle-right"></i>
+      </a>
+    
+  </nav>
+</article>
+
+
+
+
+  <div class="toc-button"  style="z-index: 100;">
+    <button class="mdui-fab mdui-ripple mdui-color-teal" mdui-menu="{target: '#toc'}"><i class="iconfont icon-list"></i></button>
+    <ul class="mdui-menu" id="toc">
+      <li class="mdui-menu-item">
+        <a href="/2021/10/09/ES6%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/" id="toc-header" class="mdui-ripple">文章目录</a>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81ES6%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">一、ES6基础语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2%E3%80%81%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.2、变量的解构赋值</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-1%E3%80%81%E6%95%B0%E7%BB%84%E7%9A%84%E8%A7%A3%E6%9E%84"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">1.2.1、数组的解构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-2%E3%80%81%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%A7%A3%E6%9E%84"><span class="toc-number">1.0.1.2.</span> <span class="toc-text">1.2.2、对象的解构</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3%E3%80%81%E6%A8%A1%E6%9D%BF%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">1.0.2.</span> <span class="toc-text">1.3、模板字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4%E3%80%81%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%AE%80%E5%8C%96%E5%86%99%E6%B3%95"><span class="toc-number">1.0.3.</span> <span class="toc-text">1.4、对象的简化写法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5%E3%80%81%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E4%BB%A5%E5%8F%8A%E5%A3%B0%E6%98%8E%E7%89%B9%E7%82%B9"><span class="toc-number">1.0.4.</span> <span class="toc-text">1.5、箭头函数以及声明特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-6%E3%80%81%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.0.5.</span> <span class="toc-text">1.6、函数参数默认值设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-7%E3%80%81rest%E5%8F%82%E6%95%B0"><span class="toc-number">1.0.6.</span> <span class="toc-text">1.7、rest参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-8%E3%80%81%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">1.0.7.</span> <span class="toc-text">1.8、扩展运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-6%E3%80%81Symbol%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">1.0.8.</span> <span class="toc-text">1.6、Symbol基本使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-7%E3%80%81%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-number">1.0.9.</span> <span class="toc-text">1.7、迭代器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-8%E3%80%81%E7%94%9F%E6%88%90%E5%99%A8"><span class="toc-number">1.0.10.</span> <span class="toc-text">1.8、生成器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-9%E3%80%81Promise"><span class="toc-number">1.0.11.</span> <span class="toc-text">1.9、Promise</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81ES6%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">二、ES6高级语法</span></a></li></ol>
+      </li>
+    </ul>
+  </div>
+
+
+
+    <div id="comment" class="mdui-card mdui-p-a-2 mdui-m-b-5">
+      <div class="mdui-tab" mdui-tab>
+        
+          <a href="#comment-tab0" class="mdui-ripple">gitalk</a>
+        
+          <a href="#comment-tab1" class="mdui-ripple">livere</a>
+        
+      </div>
+      
+        <div id="comment-tab0" class="mdui-p-a-2">
+          <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+<script>
+  var gitalk = new Gitalk({
+    clientID: '',
+    clientSecret: '',
+    repo: '',
+    owner: '',
+    admin: [''],
+    id:  md5(location.pathname) ,
+    distractionFreeMode: 'true',
+  });
+  gitalk.render('gitalk-container');
+</script>
+        </div>
+      
+        <div id="comment-tab1" class="mdui-p-a-2">
+          <div id="lv-container" data-id="city" data-uid="">
+  <script type="text/javascript">
+    (function (d, s) {
+      var j, e = d.getElementsByTagName(s)[0];
+      if (typeof LivereTower === 'function') { return; }
+      j = d.createElement(s);
+      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+      j.async = true;
+      e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  </script>
+  <noscript>Please enable JavaScript to view the comments powered by LiveRe.</noscript>
+</div>
+        </div>
+      
+    </div>
+
+  </main>
+  <footer id="footer" class="mdui-text-center mdui-m-t-5 mdui-p-b-2 mdui-p-t-4 mdui-color-theme">
+  <div class="mdui-container">
+    <div class="mdui-row">
+      
+        <a href="https://beian.miit.gov.cn" rel="noopener" target="_blank"></a>
+      
+      <span>
+        &copy; 2015 - 2021 
+        
+          <span style="color:#d9333f" class="iconfont icon-heart"></span>
+        
+        Louis
+      </span>
+    </div>
+    <div class="mdui-row">
+      
+        <div class="mdui-col-xs-6 mdui-text-right">
+          <span>Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a></span>
+        </div>
+        <div class="mdui-col-xs-6 mdui-text-left">
+          <span>Theme: <a href="https://github.com/kb1000fx/Meadow" rel="noopener" target="_blank">Meadow</a></span>
+        </div>
+      
+    </div>
+    <div class="mdui-row">
+      
+        <div class="mdui-col-xs-6 mdui-text-right">
+          <span id="busuanzi_container_site_uv" style="display: none;"> <span class="iconfont icon-user"></span>总访客量 <span id="busuanzi_value_site_uv"></span></span>
+        </div>
+        <div class="mdui-col-xs-6 mdui-text-left">
+          <span id="busuanzi_container_site_pv" style="display: none;"> <span class="iconfont icon-eye"></span>总访问量 <span id="busuanzi_value_site_pv"></span></span>
+        </div>
+      
+    </div>
+ </div>
+</footer>
+  
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-teal" style="z-index:100;"><i class="iconfont icon-arrowup"></i></button>
+  
+  
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({
+        startOnLoad: true,
+        theme: "default"
+    });</script>
+
+
+
+
+    
+<script src="/js/mdui.min.v1.0.0.js"></script>
+
+
+
+
+<script src="/js/meadow.js"></script>
+
+</body>
+</html >
