@@ -222,7 +222,7 @@
     </span>
     <span>
       <span class="iconfont icon-calendar-check"></span>
-      更新于:&nbsp;2021-09-13
+      更新于:&nbsp;2021-10-14
     </span>
     <span>
       <span class="iconfont icon-folder"></span>
@@ -286,7 +286,27 @@
 
   
   <div class="mdui-card-content mdui-typo mdui-p-x-4">
-    
+    <div align="center">
+
+<p><img src="/2021/09/13/static%E5%85%B3%E9%94%AE%E5%AD%97/static.jpg" alt="static"></p>
+</div>
+
+<span id="more"></span>
+
+<h2 id="一、查漏补缺"><a href="#一、查漏补缺" class="headerlink" title="一、查漏补缺"></a>一、查漏补缺</h2><ul>
+<li>在<code>java</code>中构造器不能定义返回值类型，也不能使用void声明构造器没有返回值。如果为构造器定义了返回值类型，或使用void声明构造器没有返回值，编译时不会出错，但<code>java</code>会把这个所谓的构造器当成方法来处理，也就是说它不再是 构造器了。</li>
+<li>在<code>java</code>中方法不能独立存在，必须属于类或对象</li>
+</ul>
+<h2 id="二、static"><a href="#二、static" class="headerlink" title="二、static"></a>二、static</h2><h4 id="2-1、static修饰方法"><a href="#2-1、static修饰方法" class="headerlink" title="2.1、static修饰方法"></a>2.1、static修饰方法</h4><p><strong>在《Java编程思想》是这样介绍static关键字的</strong>：</p>
+<p>`static方法就是没有this的方法。在static方法内部不能调用非静态方法，反过来是可以的。而且可以在没有创建任何对象的前提下，仅仅通过类本身来调用static方法。这实际上正是static方法的主要用途。</p>
+<p><strong>静态成员为什么不能访问非静态成员？</strong></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> 在static修饰的方法中使用this关键字，则这个关键字无法指向合适的对象。所以static修饰的方法中不能使用this引用。由于static修饰的方法不能使用this引用，所以static修饰的方法不能访问不适用static修饰的普通成员。</span><br></pre></td></tr></table></figure>
+
+<p>换个简单的说法，创建一个类，类里分别有一个类变量，类方法（类方法中访问了实例变量，虽然这是错的）和实例变量，在没有创建实例对象的情况下，直接用类名调用类方法，此时对象不存在，实例变量还不存在，也就无法在类方法中访问一个不存在的实例变量了，所以java设计为静态成员不能访问非静态成员。</p>
+<h4 id="2-2、static修饰变量"><a href="#2-2、static修饰变量" class="headerlink" title="2.2、static修饰变量"></a>2.2、static修饰变量</h4><p>​        static变量也称作静态变量，静态变量和非静态变量的区别是：静态变量被所有的对象所共享，在内存中只有一个副本，它当且仅当在类初次加载时会被初始化。而非静态变量是对象所拥有的，在创建对象的时候被初始化，存在多个副本，各个对象拥有的副本互不影响。static成员变量的初始化顺序按照定义的顺序进行初始化。</p>
+<h4 id="2-3、static修饰代码块"><a href="#2-3、static修饰代码块" class="headerlink" title="2.3、static修饰代码块"></a>2.3、static修饰代码块</h4><p>​        static关键字还有一个比较关键的作用是用来形成静态代码块以优化程序性能。static可以置于类中的任何地方，类中可有有多个static块。再类初次加载的时候，会按照static块的顺序来执行每个static块，并且只能执行一次。系统将在类初始化阶段执行静态初始化块，而不是再创建对象时才执行。因此静态初始化块总是比普通初始化先执行。系统再在类的初始化阶段执行静态代码块时，不仅会执行本类的静态初始化块，而且还会一直追溯到<code>java.lang.Obeject</code>类，先执行<code>java.lang.Obeject</code>的静态初始化块，然后执行器父类的静态初始化块，最后才执行该类的静态初始化块，经过这个过程，才完成了该类的初始化过程。同理，静态初始化块也不能访问非静态成员。</p>
+<h4 id="2-4、static修饰内部类"><a href="#2-4、static修饰内部类" class="headerlink" title="2.4、static修饰内部类"></a>2.4、static修饰内部类</h4><p>​        使用static修饰的内部类属于外部类本身，而不是外部类的某个对象（外部类不能使用static修饰）。静态内部类作为一个类其内部可以包含静态成员和非静态成员，但其作为外部类的静态成员则需要遵循静态成员不能访问非静态成员的规则，所以静态内部类不能访问外部类的实例成员，只能访问外部类的的静态成员。与普通内部类不同的是，外部类不能直接访问普通内部类的成员变量，但是外部类可以用静态内部类名访问静态内部类的类成员。</p>
+
   </div>
   <!--文末结束语-->
   
@@ -320,7 +340,7 @@
     <ul class="mdui-menu" id="toc">
       <li class="mdui-menu-item">
         <a href="/2021/09/13/static%E5%85%B3%E9%94%AE%E5%AD%97/" id="toc-header" class="mdui-ripple">文章目录</a>
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%9F%A5%E6%BC%8F%E8%A1%A5%E7%BC%BA"><span class="toc-number">1.</span> <span class="toc-text">一、查漏补缺</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81static"><span class="toc-number">2.</span> <span class="toc-text">二、static</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1%E3%80%81static%E4%BF%AE%E9%A5%B0%E6%96%B9%E6%B3%95"><span class="toc-number">2.0.1.</span> <span class="toc-text">2.1、static修饰方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2%E3%80%81static%E4%BF%AE%E9%A5%B0%E5%8F%98%E9%87%8F"><span class="toc-number">2.0.2.</span> <span class="toc-text">2.2、static修饰变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3%E3%80%81static%E4%BF%AE%E9%A5%B0%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-number">2.0.3.</span> <span class="toc-text">2.3、static修饰代码块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4%E3%80%81static%E4%BF%AE%E9%A5%B0%E5%86%85%E9%83%A8%E7%B1%BB"><span class="toc-number">2.0.4.</span> <span class="toc-text">2.4、static修饰内部类</span></a></li></ol></li></ol></li></ol>
       </li>
     </ul>
   </div>

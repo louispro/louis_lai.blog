@@ -222,7 +222,7 @@
     </span>
     <span>
       <span class="iconfont icon-calendar-check"></span>
-      更新于:&nbsp;2021-10-06
+      更新于:&nbsp;2021-10-15
     </span>
     <span>
       <span class="iconfont icon-folder"></span>
@@ -297,8 +297,8 @@
 
 <span id="more"></span>
 
-<p><strong>下载地址</strong>：<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">Mysql</a></p>
-<p><strong>安装步骤(以<code>mysql5.7</code>为例)：</strong></p>
+<h2 id="一、安装Mysql5-7"><a href="#一、安装Mysql5-7" class="headerlink" title="一、安装Mysql5.7"></a>一、安装Mysql5.7</h2><p><strong>下载地址</strong>：<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">Mysql5.7</a></p>
+<p><strong>安装步骤</strong></p>
 <ol>
 <li><p>下载安装包解压至一个纯英文路径文件夹</p>
 </li>
@@ -307,14 +307,14 @@
 <li><p>输入<code>mysqld -install</code>安装</p>
 </li>
 <li><p>在<code>mysql</code>文件夹下配置<code>my.ini</code>初始化文件 文件内容为：</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#[mysqld]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">basedir</span>=D:\SQL\mysql-<span class="number">5.7</span>.<span class="number">19</span>\</span><br><span class="line"></span><br><span class="line"><span class="attr">datadir</span>=D:\SQL\mysql-<span class="number">5.7</span>.<span class="number">19</span>\data\</span><br><span class="line"></span><br><span class="line"><span class="attr">port</span>=<span class="number">3306</span></span><br><span class="line"></span><br><span class="line">--skip-grant-tables	<span class="comment">#初次配置需要加这句跳过权限检查才能登陆数据库，之后设置好数据库密码之后删除这句配置</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[mysqld]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">basedir</span>=D:\SQL\mysql-<span class="number">5.7</span>.<span class="number">19</span>\</span><br><span class="line"></span><br><span class="line"><span class="attr">datadir</span>=D:\SQL\mysql-<span class="number">5.7</span>.<span class="number">19</span>\data\</span><br><span class="line"></span><br><span class="line"><span class="attr">port</span>=<span class="number">3306</span></span><br><span class="line"></span><br><span class="line">--skip-grant-tables	<span class="comment">#初次配置需要加这句跳过权限检查才能登陆数据库，之后设置好数据库密码之后删除这句配置</span></span><br></pre></td></tr></table></figure></li>
 <li><p>输入 <code>mysqld --initialize-insecure --user=mysql</code>初始化配置</p>
 </li>
 <li><p>启动服务 <code>net start mysql</code></p>
 </li>
 <li><p>登录 <code>mysql -u root -p</code></p>
 </li>
-<li><p>修改密码  update mysql.user set authentication_string = password(‘123456’) where user=’root’;<br> 修改成功之后继续输入：flush privileges;才能成功</p>
+<li><p>修改密码  <code>update mysql.user set authentication_string = password(&#39;123456&#39;) where user=&#39;root&#39;;</code><br> 修改成功之后继续输入：<code>flush privileges;</code>才能成功</p>
 </li>
 <li><p>停止服务<code> net stop mysql</code></p>
 </li>
@@ -329,6 +329,30 @@
 </li>
 <li><p>应用程序无法正常启动<code>0xc000007b</code></p>
 <p>在查阅了各种解决方法之后，发现核心问题是<code>system32</code>文件夹下放32位的<code>msvcr120.dll和msvcp120.dll文</code>件，<code>SysWow64</code>文件下放64位<code>msvcr120.dll和msvcp120.dll</code>文件。最后本人是直接安装32位的<code>mysql</code>解决的。</p>
+</li>
+</ol>
+<h2 id="二、安装Mysql8-0"><a href="#二、安装Mysql8-0" class="headerlink" title="二、安装Mysql8.0"></a>二、安装Mysql8.0</h2><p>下载地址 ：<a target="_blank" rel="noopener" href="https://downloads.mysql.com/archives/community/">Mysql8.0</a></p>
+<p>安装步骤：</p>
+<ol>
+<li><p>下载安装包解压至一个纯英文路径文件夹</p>
+</li>
+<li><p>以管理身份打开<code>dos</code>窗口，进入<code>bin</code>目录</p>
+</li>
+<li><p>在<code>mysql</code>文件夹下配置<code>my.ini</code>初始化文件 文件内容为：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[mysqld]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">basedir</span>=D:\SQL\mysql-<span class="number">5.7</span>.<span class="number">19</span>\</span><br><span class="line"></span><br><span class="line"><span class="attr">datadir</span>=D:\SQL\mysql-<span class="number">5.7</span>.<span class="number">19</span>\data\</span><br><span class="line"></span><br><span class="line"><span class="attr">port</span>=<span class="number">3306</span></span><br><span class="line"></span><br><span class="line">--skip-grant-tables	<span class="comment">#初次配置需要加这句跳过权限检查才能登陆数据库，之后设置好数据库密码之后删除这句配置</span></span><br></pre></td></tr></table></figure></li>
+<li><p>输入 <code>mysqld --initialize-insecure --user=mysql</code>初始化配置</p>
+</li>
+<li><p>输入<code>mysqld -install</code>安装</p>
+</li>
+<li><p>启动服务 <code>net start mysql</code></p>
+</li>
+<li><p>登录 <code>mysql -u root -p</code></p>
+</li>
+<li><p>修改密码 <code>alter user root@localhost identified by &#39;123456&#39;</code>重新mysql服务</p>
+<p>修改密码的方式共有三种,这里在介绍一种。</p>
+<ul>
+<li><code>set password for &#39;root&#39;@&#39;localhost&#39; = password(&#39;123456&#39;)</code></li>
+</ul>
 </li>
 </ol>
 
@@ -365,7 +389,7 @@
     <ul class="mdui-menu" id="toc">
       <li class="mdui-menu-item">
         <a href="/2021/10/06/mysql%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" id="toc-header" class="mdui-ripple">文章目录</a>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">过往笔记整理</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">过往笔记整理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85Mysql5-7"><span class="toc-number"></span> <span class="toc-text">一、安装Mysql5.7</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85Mysql8-0"><span class="toc-number"></span> <span class="toc-text">二、安装Mysql8.0</span></a>
       </li>
     </ul>
   </div>

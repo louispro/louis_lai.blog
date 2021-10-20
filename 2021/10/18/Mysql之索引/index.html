@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <script>if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode)) window.location.href="https://support.dmeng.net/upgrade-your-browser.html?referrer="+encodeURIComponent(window.location.href); </script>
+    
+    
+        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Regular.woff2" as="font">
+        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Bold.woff2" as="font">
+    
+    
+    
+        <link rel="shortcut icon" href="/icons/favicon.ico">
+    
+
+    
+    
+        
+<link rel="stylesheet" href="/css/mdui.min.v1.0.0.css">
+
+    
+    
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/iconfont.css">
+
+
+    
+    
+
+    
+        <script data-ad-client="ca-" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+          
+
+
+    
+    
+    <title>
+        
+            Mysql之索引 | Louis
+        
+    </title>
+    
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-teal mdui-theme-accent-blue">
+  
+  <header class="mdui-appbar mdui-appbar-fixed">
+  <div id="toolbar" class="mdui-toolbar mdui-color-theme">
+    <button class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="iconfont icon-menu"></i></button>
+    <a href="/" class="mdui-typo-headline">Louis</a>
+    <a href="/" class="header-subtitle mdui-typo-headline">天天向上</a>
+    <div class="mdui-toolbar-spacer"></div>
+    <button class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: 'search'}"><i class="iconfont icon-search"></i></button>
+  </div>
+</header>
+
+<div class="mdui-dialog" id="search">
+  
+    <div class="search-form">
+      <input type="search" class="search-form-input" placeholder="请输入关键字" onfocus="listenSearchFunc()">
+    </div>
+    <div class="search-result" data-resource="/search.xml"></div>
+  
+</div>
+
+  <aside id="sidebar" class="mdui-drawer">
+    <div class="mdui-tab" mdui-tab>
+        <a href="#sidebar-tab1" id="sidebartab" class="mdui-ripple mdui-tab-active">站点概览</a>
+        <a href="#sidebar-tab2" id="sidebartab" class="mdui-ripple">关于</a>
+    </div>
+
+    
+    <div id="sidebar-tab1" class="mdui-p-a-1">
+        <div class="mdui-list">
+            
+                
+                <a href="/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-home"></i>
+                    </div>
+                    <div class="mdui-list-item-content">主页</div>
+                </a>
+            
+                
+                <a href="/tags/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-bookmark"></i>
+                    </div>
+                    <div class="mdui-list-item-content">标签</div>
+                </a>
+            
+                
+                <a href="/categories/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-folder"></i>
+                    </div>
+                    <div class="mdui-list-item-content">分类</div>
+                </a>
+            
+                
+                <a href="/archives/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-archive"></i>
+                    </div>
+                    <div class="mdui-list-item-content">归档</div>
+                </a>
+            
+                
+                <a href="/tools/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-tools"></i>
+                    </div>
+                    <div class="mdui-list-item-content">工具箱</div>
+                </a>
+            
+                
+                <a href="/about/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-user"></i>
+                    </div>
+                    <div class="mdui-list-item-content">关于</div>
+                </a>
+            
+            <div class="mdui-list-item mdui-ripple">
+                <div class="mdui-list-item-icon">
+                    <i class="iconfont icon-moon"></i>
+                </div>
+                <div class="mdui-list-item-content">夜间模式</div>
+                <label class="mdui-switch" id="darkmode">
+                  <input type="checkbox" id="nightmode_switch"/>
+                  <i class="mdui-switch-icon"></i>
+                </label>
+            </div>           
+        </div>
+    </div>
+
+    
+    <div id="sidebar-tab2" class="mdui-p-a-1">
+        <div class="sidebar-overview">
+            <div class="sidebar-avatar">
+                
+                    <img src="/icons/avatar.gif"/>
+                
+            </div>
+            <div class="sidebar-author-name">Louis</div>
+            <div class="sidebar-description">A blog base on hexo,themes copy from https://github.com/kb1000fx/hexo-theme-meadow,thanks</div>
+        </div>
+        <div class="sidebar-links">
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-mail"></i></span>
+                    <a href="mailto:1598358615@qq.com" class="mdui-chip-title">E-Mail</a>
+                </div>
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-github"></i></span>
+                    <a target="_blank" rel="noopener" href="https://github.com/louispro" class="mdui-chip-title">GitHub</a>
+                </div>
+            
+        </div>
+        <ul class="mdui-list" mdui-collapse="{accordion: true}">
+            <li class="mdui-collapse-item">
+                <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-link"></i>
+                    </div>
+                    <div class="mdui-list-item-content">友情链接</div>
+                    <div class="mdui-collapse-item-arrow">
+                        <i class="mdui-list-item-icon iconfont icon-angle-down"></i>
+                    </div>
+                </div>
+                <ul id="linksList" class="mdui-collapse-item-body mdui-list mdui-list-dense">
+                    
+                        <a target="_blank" rel="noopener" href="https://garybear.cn/hexo-theme-meadow/" class="mdui-list-item mdui-ripple">
+                            Meadow说明文档
+                        </a>
+                    
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mdui-divider"></div>
+    
+    
+</aside>
+  
+  <main id="main-contain" class="mdui-container mdui-m-t-5">
+    <article id="article" class="mdui-card mdui-p-b-2 mdui-m-b-5">
+  <header class="mdui-card-media">
+    
+    
+      <div class="post-header"> 
+  <a class="post-header-title" href="/2021/10/18/Mysql%E4%B9%8B%E7%B4%A2%E5%BC%95/">Mysql之索引</a>
+  <div class="post-header-meta">
+    <span>
+      <span class="iconfont icon-calendar"></span>
+      发布于:&nbsp;2021-10-18
+    </span>
+    <span>
+      <span class="iconfont icon-calendar-check"></span>
+      更新于:&nbsp;2021-10-19
+    </span>
+    <span>
+      <span class="iconfont icon-folder"></span>
+      分类于:&nbsp;<a class="category-link" href="/categories/Mysql/">Mysql</a> > <a class="category-link" href="/categories/Mysql/Mysql%E5%9F%BA%E7%A1%80/">Mysql基础</a>
+    </span>
+    
+      <span>
+        <span class="iconfont icon-eye"></span>
+        阅读次数:&nbsp;
+        <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
+      </span>
+    
+  </div>
+</div>   
+    
+
+
+
+    
+    
+    <div class="mdui-card-menu">
+    
+      <button class="mdui-btn mdui-btn-icon mdui-text-color-teal" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="iconfont icon-share"></i></button>
+      <ul class="mdui-menu" id="share_menu">
+        <li class="mdui-menu-item">
+          <a href="http://service.weibo.com/share/share.php?appkey=&title=Mysql之索引&url=http://example.com/2021/10/18/Mysql%E4%B9%8B%E7%B4%A2%E5%BC%95/&pic=http://example.com/null&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://twitter.com/intent/tweet?text=Mysql之索引&url=http://example.com/2021/10/18/Mysql%E4%B9%8B%E7%B4%A2%E5%BC%95/&via=Louis" target="_blank" class="mdui-ripple">分享到 Twitter</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=http://example.com/2021/10/18/Mysql%E4%B9%8B%E7%B4%A2%E5%BC%95/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://plus.google.com/share?url=http://example.com/2021/10/18/Mysql%E4%B9%8B%E7%B4%A2%E5%BC%95/" target="_blank" class="mdui-ripple">分享到 Google+</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://example.com/2021/10/18/Mysql%E4%B9%8B%E7%B4%A2%E5%BC%95/&title=Mysql之索引" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="http://connect.qq.com/widget/shareqq/index.html?site=Louis&title=Mysql之索引&summary=A blog base on hexo,themes copy from https://github.com/kb1000fx/hexo-theme-meadow,thanks&pics=http://example.com/null&url=http://example.com/2021/10/18/Mysql%E4%B9%8B%E7%B4%A2%E5%BC%95/" target="_blank" class="mdui-ripple">分享到 QQ</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://telegram.me/share/url?url=http://example.com/2021/10/18/Mysql%E4%B9%8B%E7%B4%A2%E5%BC%95/&text=Mysql之索引" target="_blank" class="mdui-ripple">分享到 Telegram</a>
+        </li>
+      </ul>
+    
+  </div>
+  </header>
+  
+  
+  
+  
+  <div class="post-tags">
+    
+      <i class="iconfont icon-tag">
+        <a rel="tag" href = /tags/Mysql/ >Mysql</a>
+      </i>
+    
+  </div>
+
+  
+  <div class="mdui-card-content mdui-typo mdui-p-x-4">
+    <br>
+
+<div align="center">
+
+<p><img src="/2021/10/18/Mysql%E4%B9%8B%E7%B4%A2%E5%BC%95/mysql.png" alt="mysql"></p>
+</div>
+
+<span id="more"></span>
+
+<p>众所周知，当数据库数据量很大执行查询时速度很慢，因为默认是全表查询，在建立索引之后借助 B+树可以加快查询速度。为了对比普通查询和索引查询，需要先准备大量数据和设置Mysql慢查询分析。</p>
+<p><strong>准备数据：</strong><br><strong>慢查询分析：</strong><br>查询是否打开慢查询分析：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select @@profiling</span><br><span class="line">#1表示开启 0表示关闭</span><br></pre></td></tr></table></figure>
+
+<p>开启慢查询分析</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set profiling=1</span><br></pre></td></tr></table></figure>
+
+<p>显示所有的查询语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show profiles</span><br></pre></td></tr></table></figure>
+
+<p>其结果如下：</p>
+<p><img src="/2021/10/18/Mysql%E4%B9%8B%E7%B4%A2%E5%BC%95/showprofiles.png" alt="showprofiles"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#查询分析每条语句整个执行过程中不同状态的执行时间</span><br><span class="line">SHOW PROFILE FOR QUERY 9	#根据query_id查询</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/10/18/Mysql%E4%B9%8B%E7%B4%A2%E5%BC%95/querydetails.png" alt="querydetails"></p>
+<h2 id="一、索引"><a href="#一、索引" class="headerlink" title="一、索引"></a>一、索引</h2><h4 id="1-1、创建索引"><a href="#1-1、创建索引" class="headerlink" title="1.1、创建索引"></a>1.1、创建索引</h4><ul>
+<li><p>在创建表的时候创建索引</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE t(</span><br><span class="line">   c1 INT PRIMARY KEY,</span><br><span class="line">   c2 INT NOT NULL,</span><br><span class="line">   c3 INT NOT NULL,</span><br><span class="line">   c4 VARCHAR(10),</span><br><span class="line">   INDEX (c2,c3) 	#创建c2和c3列为索引</span><br><span class="line">); </span><br></pre></td></tr></table></figure></li>
+<li><p>在表创建好之后为列或一组列添加索引</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create index index_name ON table_name(column_list)</span><br></pre></td></tr></table></figure></li>
+<li><p>示例</p>
+<p>建立索引之前执行查询</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM student WHERE `name`=&#x27;钮凌丽&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/10/18/Mysql%E4%B9%8B%E7%B4%A2%E5%BC%95/select_without_index.png" alt="select_without_index"></p>
+<p>第一列表示查询的id号，第二列是查询所花费的时间，第三列是查询语句</p>
+<p><img src="/2021/10/18/Mysql%E4%B9%8B%E7%B4%A2%E5%BC%95/explian_select_without_index.png" alt="explian_select_without_index"></p>
+<p>建立索引之后执行查询</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#建立索引</span><br><span class="line">CREATE INDEX name_index ON student(`name`);</span><br><span class="line">#执行查询</span><br><span class="line">SELECT * FROM student WHERE `name`=&#x27;钮凌丽&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/10/18/Mysql%E4%B9%8B%E7%B4%A2%E5%BC%95/select_with_index.png" alt="select_with_index"></p>
+<p><img src="/2021/10/18/Mysql%E4%B9%8B%E7%B4%A2%E5%BC%95/explain_select_with_index.png" alt="explain_select_with_index"></p>
+<p>可见在建立索引之后执行查询查询速度提升非常明显。</p>
+</li>
+<li><p>查看表中的索引</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show index from student;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="1-2、删除索引"><a href="#1-2、删除索引" class="headerlink" title="1.2、删除索引"></a>1.2、删除索引</h4><p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP INDEX index_name ON table_name [algorithm_option | lock_option]; </span><br></pre></td></tr></table></figure>
+
+<p><code>algorithm_option</code>允许您指定用于索引中删除特定的算法。以下显示了<code>algorithm_option</code>子句的语法:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALGORITHM [=] &#123;DEFAULT|INPLACE|COPY&#125; </span><br></pre></td></tr></table></figure>
+
+<p>对于索引删除，支持以下算法：</p>
+<ul>
+<li><code>COPY</code>：表逐行复制到新表，<code>DROP INDEX</code>然后在原始表的副本上执行。并发数据操作语句例如<code>INSERT</code>和<code>UPDATE</code>不允许。</li>
+<li><code>INPLACE</code>：表被重建到位而不是复制到新表。MySQL在索引删除操作的准备和执行阶段期间在表上发出独占元数据锁。算法允许并发数据操作语句。</li>
+</ul>
+<p>请注意，<code>ALGORITHM</code>子句是可选项。如果你跳过它，MySQL会使用<code>INPLACE</code>。如果<code>INPLACE</code>不支持，MySQL使用<code>COPY</code>。</p>
+<p>使用<code>DEFAULT</code>与省略<code>ALGORITHM</code>子句具有相同的效果。</p>
+<p><code>lock_option</code>控制并发的电平读出并同时索引被移除的表写操作。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCK [=] &#123;DEFAULT|NONE|SHARED|EXCLUSIVE&#125; </span><br></pre></td></tr></table></figure>
+
+<p>支持以下锁定模式：</p>
+<ul>
+<li> <code>DEFAULT</code>：这允许您具有给定算法的最大并发级别。首先，如果支持，它允许并发读取和写入。如果不支持，如果支持则允许并发读取。如果不是，请强制执行独占访问。</li>
+<li> <code>NONE</code>：如果<code>NONE</code>支持，则可以进行并发读写。否则，MySQL会发出错误。</li>
+<li> <code>SHARED</code>：如果<code>SHARED</code>支持，则可以进行并发读取，但不能写入。如果不支持并发读取，MySQL会发出错误。</li>
+<li> <code>EXCLUSIVE</code>：这会强制执行独占访问。</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop index name_index on student algorithm=inplace lock=defautl</span><br></pre></td></tr></table></figure>
+
+<p>在建表的时候如果设置了主键，则主键默认是索引，要删除<code>PRIMARY</code><a target="_blank" rel="noopener" href="https://www.begtut.com/mysql/mysql-primary-key.html">主键</a>的索引，请使用以下语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP INDEX `PRIMARY` ON table_name; </span><br></pre></td></tr></table></figure>
+
+<h4 id="1-3、显示索引"><a href="#1-3、显示索引" class="headerlink" title="1.3、显示索引"></a>1.3、显示索引</h4><p>要查询表的索引信息，请使用以下<code>SHOW INDEXES</code>语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW INDEXES FROM table_name; </span><br></pre></td></tr></table></figure>
+
+<p>在未连接到任何数据库的情况下，要获取其他数据库中表的索引信息，可以指定数据库名称：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">show indexes from table_name from database_name</span><br><span class="line">#也可以写成如下形式</span><br><span class="line">show indexes from database_name.table_name</span><br></pre></td></tr></table></figure>
+
+<p>注意：在show indexes语句中<code>index</code>和<code>key</code>是同义词，<code>in</code>和<code>from</code>是同义词</p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show indexes from student</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/10/18/Mysql%E4%B9%8B%E7%B4%A2%E5%BC%95/show_index.png" alt="show_index"></p>
+<p><strong>table</strong>：表的名称</p>
+<p><strong>NON_UNIQUE</strong>：如果索引可以包含重复项，则为1;如果可以，则为0。</p>
+<p><strong>KEY_NAME</strong>：索引的名称。<a target="_blank" rel="noopener" href="https://www.begtut.com/mysql/mysql-primary-key.html">主键</a>索引始终具有<code>PRIMARY</code>名称。</p>
+<p><strong>seq_in_index</strong>：索引中的列序列号。第一列序列号从1开始。</p>
+<p><strong>column_name</strong>： 列名称</p>
+<p><strong>collation</strong>：排序规则表示列在索引中的排序方式。<code>A</code>表示升序，<code>B</code>表示降序或<code>NULL</code>表示未分类。</p>
+<p><strong>cardinality</strong>：基数返回索引中估计的唯一值数。请注意，基数越高，查询优化器使用索引进行查找的可能性就越大。</p>
+<p><strong>sub_part</strong>：索引前缀。如果对整个列编制索引，则为null。否则，它会显示部分索引列的索引字符数。</p>
+<p><strong>packed</strong>：表示密钥是如何打包的; NUL，如果不是。</p>
+<p><strong>null</strong>：<code>YES</code> 如果列可能包含NULL值，如果不包含空值则为空。</p>
+<p><strong>INDEX_TYPE</strong>：表示使用诸如索引方法<code>BTREE</code>，<code>HASH</code>，<code>RTREE</code>，或<code>FULLTEXT</code>。</p>
+<p><strong>comment</strong>：有关索引的信息未在其自己的列中描述。</p>
+<p><strong>index_comment</strong>：显示使用<code>COMMENT</code>属性创建索引时指定的索引的注释。</p>
+<p><strong>visible</strong>：索引是否对查询优化器可见或不可见; <code>YES</code>如果是，<code>NO</code>如果不是。</p>
+<p><strong>expression</strong>：如果索引使用表达式而不是列或列前缀值，则表达式指示键部分的表达式，并且<strong>column_name</strong>：列也为NULL。</p>
+<h4 id="1-4、唯一索引"><a href="#1-4、唯一索引" class="headerlink" title="1.4、唯一索引"></a>1.4、唯一索引</h4><p>在建表时创建唯一约束：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE table_name(</span><br><span class="line">...</span><br><span class="line">   UNIQUE KEY(index_column_,index_column_2,...) </span><br><span class="line">); </span><br></pre></td></tr></table></figure>
+
+<p>向表中添加唯一约束：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE UNIQUE INDEX index_name</span><br><span class="line">ON table_name(index_column_1,index_column_2,...); </span><br><span class="line">#或者</span><br><span class="line">ALTER TABLE table_name</span><br><span class="line">ADD CONSTRAINT constraint_name UNIQUE KEY(column_1,column_2,...); </span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE IF NOT EXISTS contacts (</span><br><span class="line">    id INT AUTO_INCREMENT PRIMARY KEY,</span><br><span class="line">    first_name VARCHAR(50) NOT NULL,</span><br><span class="line">    last_name VARCHAR(50) NOT NULL,</span><br><span class="line">    phone VARCHAR(15) NOT NULL,</span><br><span class="line">    email VARCHAR(100) NOT NULL,</span><br><span class="line">    UNIQUE KEY unique_email (email)</span><br><span class="line">);</span><br><span class="line">SHOW INDEXES FROM contacts;</span><br><span class="line">#添加唯一索引</span><br><span class="line">CREATE UNIQUE INDEX name_index ON contacts(first_name,last_name);</span><br><span class="line">SHOW INDEXES FROM contacts;</span><br><span class="line">#添加唯一索引</span><br><span class="line">ALTER TABLE contacts ADD CONSTRAINT  phone_index  UNIQUE INDEX(phone);</span><br><span class="line">SHOW INDEXES FROM contacts;</span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<p><img src="/2021/10/18/Mysql%E4%B9%8B%E7%B4%A2%E5%BC%95/unique_index.png" alt="unique_index"></p>
+<h4 id="1-5、前缀索引"><a href="#1-5、前缀索引" class="headerlink" title="1.5、前缀索引"></a>1.5、前缀索引</h4><p>当要索引的列字符很多时索引则会很大且变慢（可以只索引列开始的部分字符串，节约索引空间，从而提高索引效率），您可以创建仅使用列首字符的索引，以这种方式仅索引列值的前缀可以使索引文件小很多。</p>
+<ul>
+<li><p>创建表时创建前缀索引</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE table_name(</span><br><span class="line">    column_list,</span><br><span class="line">    INDEX(column_name(length))</span><br><span class="line">); </span><br></pre></td></tr></table></figure></li>
+<li><p>向表中添加前缀索引</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX index_name</span><br><span class="line">ON table_name(column_name(length)); </span><br></pre></td></tr></table></figure></li>
+</ul>
+
+  </div>
+  <!--文末结束语-->
+  
+    <div style="text-align:center;color: #ccc;font-size:24px;"> --- 本文结束 <i class="iconfont icon-heartbeat" style="font-size:24px;"></i> The End --- </div>
+  
+  <!--页脚广告-->
+  
+  <div class="mdui-divider"></div>
+  
+  <nav>
+    
+      <a rel="prev" class="post-nav-item mdui-float-left" href="/2021/10/20/Java%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95%E4%B9%8Blambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+        <i class="iconfont icon-angle-left"></i>
+        <span>Java高级语法之lambda表达式</span>
+      </a>
+    
+    
+      <a rel="next" class="post-nav-item mdui-float-right" href="/2021/10/16/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E6%8E%A5%E5%8F%A3/">
+        <span>Java面向对象之接口</span>
+        <i class="iconfont icon-angle-right"></i>
+      </a>
+    
+  </nav>
+</article>
+
+
+
+
+  <div class="toc-button"  style="z-index: 100;">
+    <button class="mdui-fab mdui-ripple mdui-color-teal" mdui-menu="{target: '#toc'}"><i class="iconfont icon-list"></i></button>
+    <ul class="mdui-menu" id="toc">
+      <li class="mdui-menu-item">
+        <a href="/2021/10/18/Mysql%E4%B9%8B%E7%B4%A2%E5%BC%95/" id="toc-header" class="mdui-ripple">文章目录</a>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%B4%A2%E5%BC%95"><span class="toc-number">1.</span> <span class="toc-text">一、索引</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1%E3%80%81%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.1、创建索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2%E3%80%81%E5%88%A0%E9%99%A4%E7%B4%A2%E5%BC%95"><span class="toc-number">1.0.2.</span> <span class="toc-text">1.2、删除索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3%E3%80%81%E6%98%BE%E7%A4%BA%E7%B4%A2%E5%BC%95"><span class="toc-number">1.0.3.</span> <span class="toc-text">1.3、显示索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4%E3%80%81%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95"><span class="toc-number">1.0.4.</span> <span class="toc-text">1.4、唯一索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5%E3%80%81%E5%89%8D%E7%BC%80%E7%B4%A2%E5%BC%95"><span class="toc-number">1.0.5.</span> <span class="toc-text">1.5、前缀索引</span></a></li></ol></li></ol></li></ol>
+      </li>
+    </ul>
+  </div>
+
+
+
+    <div id="comment" class="mdui-card mdui-p-a-2 mdui-m-b-5">
+      <div class="mdui-tab" mdui-tab>
+        
+          <a href="#comment-tab0" class="mdui-ripple">gitalk</a>
+        
+          <a href="#comment-tab1" class="mdui-ripple">livere</a>
+        
+      </div>
+      
+        <div id="comment-tab0" class="mdui-p-a-2">
+          <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+<script>
+  var gitalk = new Gitalk({
+    clientID: '',
+    clientSecret: '',
+    repo: '',
+    owner: '',
+    admin: [''],
+    id:  md5(location.pathname) ,
+    distractionFreeMode: 'true',
+  });
+  gitalk.render('gitalk-container');
+</script>
+        </div>
+      
+        <div id="comment-tab1" class="mdui-p-a-2">
+          <div id="lv-container" data-id="city" data-uid="">
+  <script type="text/javascript">
+    (function (d, s) {
+      var j, e = d.getElementsByTagName(s)[0];
+      if (typeof LivereTower === 'function') { return; }
+      j = d.createElement(s);
+      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+      j.async = true;
+      e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  </script>
+  <noscript>Please enable JavaScript to view the comments powered by LiveRe.</noscript>
+</div>
+        </div>
+      
+    </div>
+
+  </main>
+  <footer id="footer" class="mdui-text-center mdui-m-t-5 mdui-p-b-2 mdui-p-t-4 mdui-color-theme">
+  <div class="mdui-container">
+    <div class="mdui-row">
+      
+        <a href="https://beian.miit.gov.cn" rel="noopener" target="_blank"></a>
+      
+      <span>
+        &copy; 2015 - 2021 
+        
+          <span style="color:#d9333f" class="iconfont icon-heart"></span>
+        
+        Louis
+      </span>
+    </div>
+    <div class="mdui-row">
+      
+        <div class="mdui-col-xs-6 mdui-text-right">
+          <span>Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a></span>
+        </div>
+        <div class="mdui-col-xs-6 mdui-text-left">
+          <span>Theme: <a href="https://github.com/kb1000fx/Meadow" rel="noopener" target="_blank">Meadow</a></span>
+        </div>
+      
+    </div>
+    <div class="mdui-row">
+      
+        <div class="mdui-col-xs-6 mdui-text-right">
+          <span id="busuanzi_container_site_uv" style="display: none;"> <span class="iconfont icon-user"></span>总访客量 <span id="busuanzi_value_site_uv"></span></span>
+        </div>
+        <div class="mdui-col-xs-6 mdui-text-left">
+          <span id="busuanzi_container_site_pv" style="display: none;"> <span class="iconfont icon-eye"></span>总访问量 <span id="busuanzi_value_site_pv"></span></span>
+        </div>
+      
+    </div>
+ </div>
+</footer>
+  
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-teal" style="z-index:100;"><i class="iconfont icon-arrowup"></i></button>
+  
+  
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({
+        startOnLoad: true,
+        theme: "default"
+    });</script>
+
+
+
+
+    
+<script src="/js/mdui.min.v1.0.0.js"></script>
+
+
+
+
+<script src="/js/meadow.js"></script>
+
+</body>
+</html >
