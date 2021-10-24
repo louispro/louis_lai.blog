@@ -222,7 +222,7 @@
     </span>
     <span>
       <span class="iconfont icon-calendar-check"></span>
-      更新于:&nbsp;2021-10-21
+      更新于:&nbsp;2021-10-24
     </span>
     <span>
       <span class="iconfont icon-folder"></span>
@@ -295,6 +295,53 @@
 
 <span id="more"></span>
 
+<p>Lambda表达式是<code>Java1.8</code>的重要更新之一，其可以用更简洁的代码来创建只有一个抽象方法的接口的实例。而只有一个抽象方法的接口被称为函数式接口。</p>
+<p>在介绍Lambda表达式之前先回顾一下匿名内部类：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> 匿名内部类适用于只使用一次的类，其有如下两条规则：</span><br><span class="line"><span class="bullet">*</span> 1.匿名内部类不能是抽象类，因为系统在创建匿名内部类的时候会立即创建匿名内部类的对象。而抽象类不能创建实例对象</span><br><span class="line"><span class="bullet">*</span> 2.匿名内部类不能定义构造器，匿名内部类没有类名，而构造器名和类名相同，所以无法定义构造器。但是匿名内部类可以定义初始化块，可以通过实例初始化块来完成构造器需要完成的事</span><br></pre></td></tr></table></figure>
+
+<p>定义匿名内部类的语法格式如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> 接口() | 父类构造器(实参列表)&#123;</span><br><span class="line">    <span class="comment">//匿名内部类类体部分</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当通过继承父类来创建匿名内部类时，匿名内部类将拥有和父类相似的构造器，此处的相似指拥有相同的形参列表。</p>
+<p>当通过实现接口来创建匿名内部类时，匿名内部类也不能显示创建构造器，因此匿名内部类只有一个隐式的无参构造器。</p>
+<h2 id="Lambda"><a href="#Lambda" class="headerlink" title="Lambda"></a>Lambda</h2><p>lambda表达式允许使用更简洁的代码来创建只有一个抽象方法的接口，而这种接口被称为函数式接口。</p>
+<p>对比一下匿名内部类和lambda实现函数式接口的差别：</p>
+<p>函数式接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Food</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>匿名内部类实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">(Food food)</span></span>&#123;</span><br><span class="line">        food.eat();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Person person = <span class="keyword">new</span> Person();</span><br><span class="line">        person.eat(<span class="keyword">new</span> Food()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;面条&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Lamdda实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">(Food food)</span></span>&#123;</span><br><span class="line">        food.eat();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Person person = <span class="keyword">new</span> Person();</span><br><span class="line">        person.eat(()-&gt;System.out.println(<span class="string">&quot;面条&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可见lambda实现比匿名内部类实现代码量少了许多。</p>
+<p>Lambda表达式由三部分组成：</p>
+<ul>
+<li>形参列表：形参列表允许省略形参类型。如果形参列表中只有一个参数，则括号也可以省略。</li>
+<li>箭头：<code>-&gt;</code></li>
+<li>代码块：代码块在<code>&#123;&#125;</code>内，如果只有一条语句，则可以省略{}，如果有返回语句且只有一条语句，则return和{}都可以省略。</li>
+</ul>
+<p>Lambda表达式的目标类型必须是函数式接口。</p>
+<p>上面讲过，lambda的表达式只有一行的情况下，可以省略<code>&#123;&#125;</code>，进一步的，这一行代码还可以通过方法引用和构造器引用进一步简写：</p>
+<p><strong>引用类方法：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionInterface</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Converter</span></span>&#123;</span><br><span class="line">    <span class="function">Integer <span class="title">convert</span><span class="params">(String from)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用匿名内部类创建Converter对象</span></span><br><span class="line">Converter converter = <span class="keyword">new</span> Converter()&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> Integer <span class="title">convert</span><span class="params">(String from)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Integer.valueOf(from);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用lambda表达式创建Converter对象</span></span><br><span class="line">Converter converter = from-&gt;Integer.valueOf(from);</span><br><span class="line"><span class="comment">//可以进一步简写</span></span><br><span class="line">Converter converter = Integer::valueOf;		<span class="comment">//这种简写方式会把函数式接口中的方法的参数全部传给代码块中的方法</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>引用实例方法：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Converter converter = from-&gt;<span class="string">&quot;louis&quot;</span>.indexOf(from);</span><br><span class="line"><span class="comment">//进一步简写</span></span><br><span class="line">Converter converter = <span class="string">&quot;louis&quot;</span>::indexOf;</span><br></pre></td></tr></table></figure>
+
+<p><strong>引用类对象的实例方法：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionInterface</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">MyTest</span></span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">test</span><span class="params">(String a,<span class="keyword">int</span> b,<span class="keyword">int</span> c)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MyTest mt = (a,b,c)-&gt;a.subString(b,c);</span><br><span class="line"><span class="comment">//进一步简写</span></span><br><span class="line">MyTest mt = String::subString	<span class="comment">//三个参数，第一作为方法的调用者，另外两个传给方法做参</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>引用构造器：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionInterface</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function">Person <span class="title">getPerson</span><span class="params">(String name)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//lambda表达式创建Test对象</span></span><br><span class="line">Test test = name-&gt;<span class="keyword">new</span> Person(name);</span><br><span class="line"><span class="comment">//进一步简写</span></span><br><span class="line">Test test = Person::<span class="keyword">new</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>匿名内部类和lambda表达式的区别：</strong></p>
+<ul>
+<li>匿名内部类可以为任意接口创建实例，但必须实现所有抽象方法，Lambda表达式只能为函数式接口创建实例</li>
+<li>匿名内部类可以为抽象类甚至普通类创建实例，但Lambda表达式只能为函数式接口创建实例</li>
+<li>匿名内部类实现的抽象方法的方法体允许调用接口中定义的默认方法，但是Lambda表达式代码块则不允许调用函数式接口中定义的默认方法</li>
+</ul>
 
   </div>
   <!--文末结束语-->
@@ -306,6 +353,11 @@
   <div class="mdui-divider"></div>
   
   <nav>
+    
+      <a rel="prev" class="post-nav-item mdui-float-left" href="/2021/10/23/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%B7%A5%E5%8E%82%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+        <i class="iconfont icon-angle-left"></i>
+        <span>Java设计模式之工厂设计模式</span>
+      </a>
     
     
       <a rel="next" class="post-nav-item mdui-float-right" href="/2021/10/18/Mysql%E4%B9%8B%E7%B4%A2%E5%BC%95/">
@@ -324,7 +376,7 @@
     <ul class="mdui-menu" id="toc">
       <li class="mdui-menu-item">
         <a href="/2021/10/20/Java%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95%E4%B9%8Blambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" id="toc-header" class="mdui-ripple">文章目录</a>
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Lambda"><span class="toc-number">1.</span> <span class="toc-text">Lambda</span></a></li></ol>
       </li>
     </ul>
   </div>
